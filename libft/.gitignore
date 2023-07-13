@@ -1,0 +1,4 @@
+*.o
+.idea
+*.a
+.DS_Store
