@@ -17,6 +17,10 @@ int	main(void)
 	t_data	data;
 
 	init_mlx(&data);
+	init_keys(&data);
+	init_hooks(&data);
+	init_player(&data);
+	init_rays(&data);
 	mlx_loop_hook(data.mlx, loop_hook, &data);
 	mlx_loop(data.mlx);
 }
