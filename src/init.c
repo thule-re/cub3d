@@ -38,12 +38,12 @@ void	init_keys(t_data *data)
 	data->keys.turn_left.is_pressed = 0;
 	data->keys.turn_right.is_pressed = 0;
 	data->keys.esc.is_pressed = 0;
-	data->keys.forward.keycode = XK_W;
-	data->keys.backward.keycode = XK_S;
-	data->keys.left.keycode = XK_A;
-	data->keys.right.keycode = XK_D;
-	data->keys.turn_left.keycode = XK_Left;
-	data->keys.turn_right.keycode = XK_Right;
+	data->keys.forward.keycode = 119;
+	data->keys.backward.keycode = 115;
+	data->keys.left.keycode = 97;
+	data->keys.right.keycode = 100;
+	data->keys.turn_left.keycode = 65361;
+	data->keys.turn_right.keycode = 65363;
 	data->keys.esc.keycode = XK_Escape;
 }
 
@@ -51,9 +51,9 @@ void	init_player(t_data *data)
 {
 	data->player.pos.x = 0;
 	data->player.pos.y = 0;
-	data->player.dir.x = 1;
-	data->player.dir.y = 0;
-	data->player.move_speed = 0.1;
+	data->player.dir.x = 0;
+	data->player.dir.y = -1;
+	data->player.move_speed = 0.5;
 }
 
 void	init_data(t_data *data)
