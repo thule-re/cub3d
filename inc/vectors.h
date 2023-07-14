@@ -57,6 +57,7 @@ double	vec2_dot(t_vec2 a, t_vec2 b);
 double	vec2_mag(t_vec2 a);
 t_vec2	vec2_norm(t_vec2 a);
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot);
+t_vec2	vec2_rot(t_vec2 a, double angle);
 
 
 #endif

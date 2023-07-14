@@ -24,6 +24,12 @@
 # define WIDTH  960
 # define FOV 60.0
 
+typedef struct s_map {
+	int	**map;
+	int	width;
+	int	height;
+}				t_map;
+
 typedef struct s_key {
 	int	is_pressed;
 	int	keycode;
@@ -96,5 +102,13 @@ void	update_ray_directions(t_data *data);
 
 // utils
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// testing
+void	test_render(t_data *data);
+void	draw_box(t_data *data);
+void	draw_player(t_data *data, int x, int y);
+void	clear_screen(t_data *data);
+void	draw_line(t_vec2 a, t_vec2 b, t_data *data);
+void	draw_rays(t_data *data);
 
 #endif

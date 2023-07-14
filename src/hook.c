@@ -14,7 +14,6 @@
 
 int	key_down(int k, t_data *data)
 {
-	ft_printf("key pressed: %d\n", k);
 	if (k == data->keys.esc.keycode)
 		destroy_hook(data);
 	else if (k == data->keys.forward.keycode)
@@ -34,7 +33,6 @@ int	key_down(int k, t_data *data)
 
 int	key_up(int k, t_data *data)
 {
-	ft_printf("key released: %d\n", k);
 	if (k == data->keys.forward.keycode)
 		data->keys.forward.is_pressed = 0;
 	else if (k == data->keys.backward.keycode)
@@ -61,7 +59,7 @@ int	destroy_hook(t_data *data)
 int	loop_hook(t_data *data)
 {
 	handle_keys(data);
-	my_mlx_pixel_put(data, 10, 10, 0xFF0000);
+	test_render(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
