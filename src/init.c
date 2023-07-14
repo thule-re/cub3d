@@ -56,17 +56,11 @@ void	init_player(t_data *data)
 	data->player.move_speed = 0.1;
 }
 
-void	init_rays(t_data *data)
+void	init_data(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < WIDTH)
-	{
-		data->rays[i].origin.x = data->player.pos.x;
-		data->rays[i].origin.y = data->player.pos.y;
-		data->rays[i].dir.x = cos((data->player.dir.x - FOV / 2) * M_PI / 180);
-		data->rays[i].dir.y = sin((data->player.dir.y - FOV / 2) * M_PI / 180);
-		i++;
-	}
+	init_mlx(data);
+	init_hooks(data);
+	init_keys(data);
+	init_player(data);
+	init_rays(data);
 }

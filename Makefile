@@ -26,6 +26,7 @@ FILES 		=	main \
 				player_movement \
 				player_rotation \
 				raycasting \
+				ray_utils \
 
 HEADER		=	cub3d \
 				vectors \

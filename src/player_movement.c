@@ -14,6 +14,8 @@
 
 void	handle_keys(t_data *data)
 {
+	data->player.update_pos = 0;
+	data->player.update_dir = 0;
 	if (data->keys.forward.is_pressed)
 		move_forward(data);
 	if (data->keys.backward.is_pressed)
@@ -26,6 +28,10 @@ void	handle_keys(t_data *data)
 		turn_left(data);
 	if (data->keys.turn_right.is_pressed)
 		turn_right(data);
+	if (data->player.update_pos)
+		update_ray_origins(data);
+	if (data->player.update_dir)
+		update_ray_directions(data);
 }
 
 //if (is_wall(data, new_pos.x, new_pos.y) == 0)
@@ -39,6 +45,7 @@ void	move_forward(t_data *data)
 	dir = vec2_mul(data->player.dir, data->player.move_speed);
 	new_pos = vec2_add(data->player.pos, dir);
 	data->player.pos = new_pos;
+	data->player.update_pos = 1;
 }
 
 void	move_backward(t_data *data)
@@ -50,6 +57,7 @@ void	move_backward(t_data *data)
 	dir = vec2_mul(dir, -data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
+	data->player.update_pos = 1;
 }
 
 void	move_left(t_data *data)
@@ -61,6 +69,7 @@ void	move_left(t_data *data)
 	dir = vec2_mul(dir, -data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
+	data->player.update_pos = 1;
 }
 
 void	move_right(t_data *data)
@@ -72,4 +81,5 @@ void	move_right(t_data *data)
 	dir = vec2_mul(dir, -data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
+	data->player.update_pos = 1;
 }
