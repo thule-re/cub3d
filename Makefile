@@ -54,13 +54,11 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX)
 
 $(MLX):
 	@echo "$(YELLOW)Compiling [$(MLX)]...$(RESET)"
-	@make -C $(MLX_DIR) --no-print-directory 2> /dev/null
+	@make -C $(MLX_DIR) --no-print-directory 2> /dev/null > /dev/null
 	@echo "$(GREEN)Finished [$(MLX)]$(RESET)"
 
 $(LIBFT):
-	@echo "$(YELLOW)Compiling [$(LIBFT)]...$(RESET)"
 	@make -C $(LIBFT_DIR) --no-print-directory
-	@echo "$(GREEN)Finished [$(LIBFT)]$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -72,15 +70,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@echo "$(BLUE)[$(NAME)] Deleting all objects $(RESET)"
-	@make -C $(LIBFT_DIR) clean --no-print-directory
-	@make -C $(MLX_DIR) clean --no-print-directory 2> /dev/null
 	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean --no-print-directory
+	@make -C $(MLX_DIR) clean --no-print-directory 2> /dev/null > /dev/null
 
 fclean: clean
 	@echo "$(BLUE)Deleting $(NAME) $(RESET)"
-	@rm -f $(LIBFT)
-	@make -C $(MLX_DIR) clean --no-print-directory 2> /dev/null
 	@rm -f $(NAME)
+	@rm -f $(LIBFT)
+	@make -C $(MLX_DIR) clean --no-print-directory 2> /dev/null > /dev/null
 
 re: fclean all
 
