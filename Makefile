@@ -20,10 +20,15 @@ INC_DIR 	=	./inc
 FILES 		=	main \
 				hook \
 				utils \
-				init
+				init \
+				vector1 \
+				vector2 \
+				player_movement \
+				player_rotation \
+				raycasting \
 
 HEADER		=	cub3d \
-				keycodes
+				vectors \
 
 INCL		=	$(addsuffix .h, $(addprefix $(INC_DIR)/, $(HEADER)))
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))

@@ -73,10 +73,19 @@ void	init_player(t_data *data);
 void	init_rays(t_data *data);
 
 // hook
-int		key_hook(int k, t_data *data);
+int		key_down(int k, t_data *data);
+int		key_up(int k, t_data *data);
 int		loop_hook(t_data *data);
 int		destroy_hook(t_data *data);
 
+//player
+void	handle_keys(t_data *data);
+void	move_forward(t_data *data);
+void	move_backward(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
+void	turn_left(t_data *data);
+void	turn_right(t_data *data);
 
 // utils
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
