@@ -20,14 +20,15 @@ void	test_render(t_data *data)
 
 	clear_screen(data);
 	draw_box(data);
-	x = data->player.pos.x + WIDTH / 2;
-	y = data->player.pos.y + HEIGHT / 2;
+	x = (int)data->player.pos.x + WIDTH / 2;
+	y = (int)data->player.pos.y + HEIGHT / 2;
 	draw_player(data, x, y);
 	b = vec2_mul(data->player.dir, 25.0);
 	b = vec2_add(data->player.pos, b);
-	x = b.x + WIDTH / 2;
-	y = b.y + HEIGHT / 2;
+	x = (int)b.x + WIDTH / 2;
+	y = (int)b.y + HEIGHT / 2;
 	my_mlx_pixel_put(data, x, y, 0x00FF0000);
+	draw_rays(data);
 }
 
 void	draw_box(t_data *data)
@@ -84,4 +85,25 @@ void	clear_screen(t_data *data)
 		}
 		i++;
 	}
+}
+
+void	draw_rays(t_data *data)
+{
+	t_vec2	vec;
+	int		x;
+	int		y;
+	int		i;
+
+	i = 0;
+
+	while (i < WIDTH)
+	{
+		vec = vec2_mul(data->rays[i].dir, 30.0);
+		vec = vec2_add(data->player.pos, vec);
+		x = vec.x + WIDTH / 2;
+		y = vec.y + HEIGHT / 2;
+		my_mlx_pixel_put(data, x, y, 0x0000FF00);
+		i++;
+	}
+
 }
