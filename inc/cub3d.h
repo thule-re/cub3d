@@ -48,13 +48,10 @@ typedef struct s_keyboard {
 typedef struct s_player {
 	t_vec2	pos;
 	t_vec2	dir;
-	int		update_pos;
-	int		update_dir;
 	double	move_speed;
 }				t_player;
 
 typedef struct s_ray {
-	t_vec2	origin;
 	t_vec2	dir;
 }				t_ray;
 
@@ -97,8 +94,7 @@ void	turn_left(t_data *data);
 void	turn_right(t_data *data);
 
 // ray utils
-void	update_ray_origins(t_data *data);
-void	update_ray_directions(t_data *data);
+void	update_ray_directions(t_data *data, t_mat2 rot);
 
 // utils
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
