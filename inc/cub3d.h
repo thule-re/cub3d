@@ -17,7 +17,7 @@
 # include "libft.h"
 # include "vectors.h"
 # include <X11/X.h>
-# include <X11/keysym.h>
+# include "keycodes.h"
 # include <math.h>
 
 # define HEIGHT 540
