@@ -14,41 +14,40 @@
 
 void	init_rays(t_data *data)
 {
-	int	i;
+	int		i;
+	t_vec2	delta;
+	t_vec2	dir;
 
+	if (WIDTH % 2)
+		exit(1);
+	delta = vec2_mrot(data->player.dir, g_rot90);
+	delta = vec2_mul(delta, FOV / WIDTH);
+	dir = data->player.dir;
 	i = 0;
+	while (i < WIDTH / 2)
+	{
+		dir = vec2_add(dir, delta);
+		data->rays[i].dir = vec2_norm(dir);
+		i++;
+	}
+	dir = data->player.dir;
 	while (i < WIDTH)
 	{
-		data->rays[i].origin.x = data->player.pos.x;
-		data->rays[i].origin.y = data->player.pos.y;
-		data->rays[i].dir.x = cos((data->player.dir.x - FOV / 2) * M_PI / 180);
-		data->rays[i].dir.y = sin((data->player.dir.y - FOV / 2) * M_PI / 180);
+		dir = vec2_sub(dir, delta);
+		data->rays[i].dir = vec2_norm(dir);
 		i++;
 	}
 }
 
-void	update_ray_origins(t_data *data)
+void	update_ray_directions(t_data *data, t_mat2 rot)
 {
 	int	i;
 
 	i = 0;
 	while (i < WIDTH)
 	{
-		data->rays[i].origin.x = data->player.pos.x;
-		data->rays[i].origin.y = data->player.pos.y;
-		i++;
-	}
-}
-
-void	update_ray_directions(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < WIDTH)
-	{
-		data->rays[i].dir.x = cos((data->player.dir.x - FOV / 2) * M_PI / 180);
-		data->rays[i].dir.y = sin((data->player.dir.y - FOV / 2) * M_PI / 180);
+		data->rays[i].dir = vec2_mrot(data->rays[i].dir, rot);
+		data->rays[i].dir = vec2_norm(data->rays[i].dir);
 		i++;
 	}
 }
