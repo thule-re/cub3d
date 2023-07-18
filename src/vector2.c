@@ -37,23 +37,40 @@ t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot)
 	return (result);
 }
 
-t_mat2	mat2_rot(double angle)
+t_vec2	vec2_rot_clockwise(t_vec2 vec, double angle)
 {
-	t_mat2	result;
+	double	radians;
+	t_mat2	matrix;
+	t_vec2	result;
+	double	cos_theta;
+	double	sin_theta;
 
-	result.m[0][0] = cos(angle);
-	result.m[0][1] = -sin(angle);
-	result.m[1][0] = sin(angle);
-	result.m[1][1] = cos(angle);
+	radians = angle * M_PI / 180.0;
+	cos_theta = cos(radians);
+	sin_theta = sin(radians);
+	matrix.m[0][0] = cos_theta;
+	matrix.m[0][1] = -sin_theta;
+	matrix.m[1][0] = sin_theta;
+	matrix.m[1][1] = cos_theta;
+	result = vec2_mrot(vec, matrix);
 	return (result);
 }
 
-t_vec2	vec2_rot(t_vec2 a, double angle)
+t_vec2	vec2_rot_counter_clockwise(t_vec2 vec, double angle)
 {
+	double	radians;
+	t_mat2	matrix;
 	t_vec2	result;
-	t_mat2	rot;
+	double	cos_theta;
+	double	sin_theta;
 
-	rot = mat2_rot(angle);
-	result = vec2_mrot(a, rot);
+	radians = angle * M_PI / 180.0;
+	cos_theta = cos(radians);
+	sin_theta = sin(radians);
+	matrix.m[0][0] = cos_theta;
+	matrix.m[0][1] = sin_theta;
+	matrix.m[1][0] = -sin_theta;
+	matrix.m[1][1] = cos_theta;
+	result = vec2_mrot(vec, matrix);
 	return (result);
 }

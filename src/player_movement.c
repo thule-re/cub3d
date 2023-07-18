@@ -65,8 +65,9 @@ void	move_left(t_data *data)
 	t_vec2	new_pos;
 	t_vec2	dir;
 
-	dir = vec2_mrot(data->player.dir, g_rot270);
-	dir = vec2_mul(dir, -data->player.move_speed);
+
+	dir = vec2_mrot(data->player.dir, g_rot90);
+	dir = vec2_mul(dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
 	data->player.update_pos = 1;
@@ -77,8 +78,8 @@ void	move_right(t_data *data)
 	t_vec2	new_pos;
 	t_vec2	dir;
 
-	dir = vec2_mrot(data->player.dir, g_rot90);
-	dir = vec2_mul(dir, -data->player.move_speed);
+	dir = vec2_mrot(data->player.dir, g_rot270);
+	dir = vec2_mul(dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
 	data->player.update_pos = 1;

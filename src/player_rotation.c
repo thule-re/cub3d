@@ -14,14 +14,14 @@
 
 void	turn_left(t_data *data)
 {
-	data->player.dir = vec2_mrot(data->player.dir, g_rot3);
+	data->player.dir = vec2_rot_counter_clockwise(data->player.dir, 1);
 	data->player.dir = vec2_norm(data->player.dir);
 	data->player.update_dir = 1;
 }
 
 void	turn_right(t_data *data)
 {
-	data->player.dir = vec2_mrot(data->player.dir, g_rot357);
+	data->player.dir = vec2_rot_clockwise(data->player.dir, 1);
 	data->player.dir = vec2_norm(data->player.dir);
 	data->player.update_dir = 1;
 }

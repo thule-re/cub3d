@@ -39,14 +39,14 @@ static const t_mat2	g_rot270 = {
 		{-1, 0}}
 };
 
-static const t_mat2	g_rot3 = {
-	.m = {{-0.9899924966, -0.14112000806}, \
-		{0.14112000806, -0.9899924966}}
+static const t_mat2	g_counter_clockwise_matrix = {
+	.m = {{0.999847695156391, 0.017452406437283}, \
+	{-0.017452406437283, 0.999847695156391}}
 };
 
-static const t_mat2	g_rot357 = {
-	.m = {{-0.27516333805, -0.96126169594}, \
-		{0.96126169594, -0.27516333805}}
+static const t_mat2	g_clockwise_matrix = {
+	.m = {{0.999847695156391, -0.017452406437283}, \
+		{0.017452406437283, 0.999847695156391}}
 };
 
 t_vec2	vec2_add(t_vec2 a, t_vec2 b);
@@ -57,7 +57,8 @@ double	vec2_dot(t_vec2 a, t_vec2 b);
 double	vec2_mag(t_vec2 a);
 t_vec2	vec2_norm(t_vec2 a);
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot);
-t_vec2	vec2_rot(t_vec2 a, double angle);
+t_vec2	vec2_rot_clockwise(t_vec2 vec, double angle);
+t_vec2	vec2_rot_counter_clockwise(t_vec2 vec, double angle);
 
 
 #endif
