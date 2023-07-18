@@ -14,6 +14,7 @@
 
 int	key_down(int k, t_data *data)
 {
+	//ft_printf("key pressed: %i\n", k);
 	if (k == data->keys.esc.keycode)
 		destroy_hook(data);
 	else if (k == data->keys.forward.keycode)
@@ -33,6 +34,7 @@ int	key_down(int k, t_data *data)
 
 int	key_up(int k, t_data *data)
 {
+	//ft_printf("key released: %i\n", k);
 	if (k == data->keys.forward.keycode)
 		data->keys.forward.is_pressed = 0;
 	else if (k == data->keys.backward.keycode)
@@ -50,6 +52,7 @@ int	key_up(int k, t_data *data)
 
 int	destroy_hook(t_data *data)
 {
+	mlx_do_key_autorepeaton(data->mlx);
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
 	free(data->mlx);
