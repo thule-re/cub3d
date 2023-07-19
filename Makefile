@@ -32,6 +32,7 @@ FILES 		=	main \
 
 HEADER		=	cub3d \
 				vectors \
+				keycodes \
 
 INCL		=	$(addsuffix .h, $(addprefix $(INC_DIR)/, $(HEADER)))
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
@@ -63,7 +64,7 @@ $(MLX):
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCL)
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling [$@]...$(RESET)"
 	@cc $(FLAGS) $(INC) -o $@ -c $<
@@ -237,5 +238,3 @@ coffee:
 	@echo "     '._     """----.....______.....----"""         _.'"
 	@echo '         ""--..,,_____            _____,,..--"""'''
 	@echo '                      """------"""'
-
-.PHONY: all clean fclean re coffee
