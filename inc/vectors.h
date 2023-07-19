@@ -59,6 +59,8 @@ t_vec2	vec2_norm(t_vec2 a);
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot);
 t_vec2	vec2_rot_clockwise(t_vec2 vec, double angle);
 t_vec2	vec2_rot_counter_clockwise(t_vec2 vec, double angle);
+t_mat2	rot_matrixc(double angle);
+t_mat2	rot_matrixcc(double angle);
 
 
 #endif
