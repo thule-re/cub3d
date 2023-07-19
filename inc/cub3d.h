@@ -48,7 +48,10 @@ typedef struct s_keyboard {
 typedef struct s_player {
 	t_vec2	pos;
 	t_vec2	dir;
+	t_mat2	clockwise_rot;
+	t_mat2	cclockwise_rot;
 	double	move_speed;
+	double	rotation_angle;
 }				t_player;
 
 typedef struct s_ray {
