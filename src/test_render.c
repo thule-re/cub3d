@@ -93,17 +93,21 @@ void	draw_rays(t_data *data)
 	int		x;
 	int		y;
 	int		i;
+	int		j;
 
-	i = 0;
-
-	while (i < WIDTH)
+	j = 30;
+	while (j < 250)
 	{
-		vec = vec2_mul(data->rays[i].dir, 30.0);
-		vec = vec2_add(data->player.pos, vec);
-		x = vec.x + WIDTH / 2;
-		y = vec.y + HEIGHT / 2;
-		my_mlx_pixel_put(data, x, y, 0x0000FF00);
-		i++;
+		i = 48;
+		while (i < WIDTH)
+		{
+			vec = vec2_mul(data->rays[i].dir, j);
+			vec = vec2_add(data->player.pos, vec);
+			x = (int)vec.x + WIDTH / 2;
+			y = (int)vec.y + HEIGHT / 2;
+			my_mlx_pixel_put(data, x, y, 0x0000FF00);
+			i += 96;
+		}
+		j++;
 	}
-
 }
