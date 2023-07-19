@@ -23,6 +23,7 @@ FILES 		=	main \
 				init \
 				vector1 \
 				vector2 \
+				vector3 \
 				player_movement \
 				player_rotation \
 				raycasting \

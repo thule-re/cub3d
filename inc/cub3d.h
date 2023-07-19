@@ -16,8 +16,8 @@
 # include "mlx.h"
 # include "libft.h"
 # include "vectors.h"
-# include <X11/X.h>
 # include "keycodes.h"
+# include <X11/X.h>
 # include <math.h>
 
 # define HEIGHT 540
