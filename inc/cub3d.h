@@ -19,15 +19,26 @@
 # include "keycodes.h"
 # include <X11/X.h>
 # include <math.h>
+# include <stdlib.h>
 
 # define HEIGHT 540
 # define WIDTH  960
 # define FOV 60.0
 
+typedef struct s_tile {
+	char	type;
+}				t_tile;
+
 typedef struct s_map {
-	int	**map;
-	int	width;
-	int	height;
+	t_tile	**map;
+	int		width;
+	int		height;
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	int		floor_color;
+	int		ceiling_color;
 }				t_map;
 
 typedef struct s_key {
@@ -71,15 +82,17 @@ typedef struct s_data {
 	t_keyboard	keys;
 	t_player	player;
 	t_ray		rays[WIDTH];
+	t_map		map;
 }				t_data;
 
 // init
-void	init_data(t_data *data);
+void	init_data(t_data *data, char *filename);
 void	init_mlx(t_data *data);
 void	init_keys(t_data *data);
 void	init_hooks(t_data *data);
 void	init_player(t_data *data);
 void	init_rays(t_data *data);
+void	init_map(t_data *data, char *filename);
 
 // hook
 int		key_down(int k, t_data *data);
@@ -101,6 +114,21 @@ void	update_ray_directions(t_data *data, t_mat2 rot);
 
 // utils
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+char	*trim(char *str, char c);
+void	free_split(char **split);
+
+// error
+void	wrong_usage(void);
+void	file_error(char *filename);
+void	error(t_data *data, char *msg);
+
+// cleanup
+void	clean_exit(t_data *data);
+
+// map parsing
+int		parse_map(t_data *data, char **content);
+int		check_valid(char **map);
+void	fill_map(t_data *data, char **map);
 
 // testing
 void	test_render(t_data *data);

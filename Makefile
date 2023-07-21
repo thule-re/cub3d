@@ -29,6 +29,12 @@ FILES 		=	main \
 				raycasting \
 				ray_utils \
 				test_render \
+				map_validation \
+				map_parsing \
+				map_init \
+				error \
+				cleanup \
+
 
 HEADER		=	cub3d \
 				vectors \

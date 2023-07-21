@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: treeps <treeps@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 11:53:27 by treeps            #+#    #+#             */
-/*   Updated: 2023/07/13 11:53:27 by treeps           ###   ########.fr       */
+/*   Created: 2023/07/21 13:24:24 by treeps            #+#    #+#             */
+/*   Updated: 2023/07/21 13:24:24 by treeps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
-{
-	t_data	data;
 
-	if (argc != 2)
-		wrong_usage();
-	init_data(&data, argv[1]);
-	mlx_loop_hook(data.mlx, loop_hook, &data);
-	mlx_loop(data.mlx);
+static void	free_map(t_map map)
+{
+	free(map.path_no);
+	free(map.path_so);
+	free(map.path_we);
+	free(map.path_ea);
+}
+
+void	clean_exit(t_data *data)
+{
+	free_map(data->map);
+	if (data->mlx)
+		destroy_hook(data);
+	exit(1);
 }
