@@ -20,15 +20,33 @@ void	test_render(t_data *data)
 
 	clear_screen(data);
 	draw_box(data);
-	x = (int)data->player.pos.x + WIDTH / 2;
-	y = (int)data->player.pos.y + HEIGHT / 2;
-	draw_player(data, x, y);
-	b = vec2_mul(data->player.dir, 25.0);
+	draw_grid(data);
+	x = (int)(data->player.pos.x * 10) + WIDTH / 2;
+	y = (int)(data->player.pos.y * 10) + HEIGHT / 2;
+	draw_rect(data, x, y, 6, 0x0000FF00);
+	b = vec2_mul(data->player.dir, 2.5);
 	b = vec2_add(data->player.pos, b);
-	x = (int)b.x + WIDTH / 2;
-	y = (int)b.y + HEIGHT / 2;
+	x = (int)(b.x * 10) + WIDTH / 2;
+	y = (int)(b.y * 10) + HEIGHT / 2;
 	my_mlx_pixel_put(data, x, y, 0x00FF0000);
 	draw_rays(data);
+}
+
+void	draw_grid(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < data->map.height)
+	{
+		j = -1;
+		while (++j < data->map.width)
+		{
+			if (data->map.map[i][j].type)
+				draw_rect(data, j * 10 + 5 + WIDTH / 2, i * 10 + 5 + HEIGHT / 2, 10, 0x00FF0000);
+		}
+	}
 }
 
 void	draw_box(t_data *data)
@@ -51,18 +69,18 @@ void	draw_box(t_data *data)
 	}
 }
 
-void	draw_player(t_data *data, int x, int y)
+void	draw_rect(t_data *data, int x, int y, int size, int color)
 {
 	int	i;
 	int	j;
 
-	i = x - 3;
-	while (i < x + 3)
+	i = x - size / 2;
+	while (i < x + size / 2)
 	{
-		j = y - 3;
-		while (j < y + 3)
+		j = y - size / 2;
+		while (j < y + size / 2)
 		{
-			my_mlx_pixel_put(data, i, j, 0x00FF0000);
+			my_mlx_pixel_put(data, i, j, color);
 			j++;
 		}
 		i++;
@@ -93,21 +111,21 @@ void	draw_rays(t_data *data)
 	int		x;
 	int		y;
 	int		i;
-	int		j;
+	double	j;
 
-	j = 30;
-	while (j < 250)
+	j = 3;
+	while (j < 25)
 	{
 		i = 48;
 		while (i < WIDTH)
 		{
 			vec = vec2_mul(data->rays[i].dir, j);
 			vec = vec2_add(data->player.pos, vec);
-			x = (int)vec.x + WIDTH / 2;
-			y = (int)vec.y + HEIGHT / 2;
+			x = (int)(vec.x * 10) + WIDTH / 2;
+			y = (int)(vec.y * 10) + HEIGHT / 2;
 			my_mlx_pixel_put(data, x, y, 0x0000FF00);
 			i += 96;
 		}
-		j++;
+		j += 0.1;
 	}
 }

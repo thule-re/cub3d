@@ -133,9 +133,9 @@ void	fill_map(t_data *data, char **map);
 // testing
 void	test_render(t_data *data);
 void	draw_box(t_data *data);
-void	draw_player(t_data *data, int x, int y);
+void	draw_rect(t_data *data, int x, int y, int size, int color);
 void	clear_screen(t_data *data);
-void	draw_line(t_vec2 a, t_vec2 b, t_data *data);
 void	draw_rays(t_data *data);
+void	draw_grid(t_data *data);
 
 #endif
