@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 static void	free_map(t_map map)
 {
 	free(map.path_no);

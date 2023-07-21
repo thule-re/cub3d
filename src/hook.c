@@ -14,7 +14,6 @@
 
 int	key_down(int k, t_data *data)
 {
-	//ft_printf("key pressed: %i\n", k);
 	if (k == data->keys.esc.keycode)
 		destroy_hook(data);
 	else if (k == data->keys.forward.keycode)
@@ -34,7 +33,6 @@ int	key_down(int k, t_data *data)
 
 int	key_up(int k, t_data *data)
 {
-	//ft_printf("key released: %i\n", k);
 	if (k == data->keys.forward.keycode)
 		data->keys.forward.is_pressed = 0;
 	else if (k == data->keys.backward.keycode)

@@ -29,7 +29,6 @@ t_mat2	rot_matrixc(double angle)
 	return (matrix);
 }
 
-
 t_mat2	rot_matrixcc(double angle)
 {
 	t_mat2	matrix;
