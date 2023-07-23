@@ -62,5 +62,4 @@ t_vec2	vec2_rot_counter_clockwise(t_vec2 vec, double angle);
 t_mat2	rot_matrixc(double angle);
 t_mat2	rot_matrixcc(double angle);
 
-
 #endif
