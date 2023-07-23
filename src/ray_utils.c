@@ -21,6 +21,7 @@ void	init_rays(t_data *data)
 	i = 0;
 	while (i < WIDTH)
 	{
+		data->rays[i].pos = &data->player.pos;
 		data->rays[i].dir = vec2_norm(dir);
 		dir = vec2_rot_clockwise(dir, FOV / WIDTH);
 		i++;

@@ -46,8 +46,7 @@ void	move_backward(t_data *data)
 	t_vec2	new_pos;
 	t_vec2	dir;
 
-	dir = vec2_mrot(data->player.dir, g_rot180);
-	dir = vec2_mul(dir, -data->player.move_speed);
+	dir = vec2_mul(data->player.dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	data->player.pos = new_pos;
 }

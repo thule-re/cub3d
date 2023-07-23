@@ -67,6 +67,7 @@ typedef struct s_player {
 
 typedef struct s_ray {
 	t_vec2	dir;
+	t_vec2	*pos;
 }				t_ray;
 
 typedef struct s_data {
