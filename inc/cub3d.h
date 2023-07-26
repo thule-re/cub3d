@@ -25,6 +25,17 @@
 # define WIDTH  960
 # define FOV 60.0
 
+typedef struct s_ray {
+	t_vec2	dir;
+	t_vec2	*pos;
+	int		idx;
+}				t_ray;
+
+typedef struct s_intersect {
+	t_ray	*ray;
+	t_vec2	pos;
+}				t_intersect;
+
 typedef struct s_tile {
 	char	type;
 }				t_tile;
@@ -79,11 +90,6 @@ typedef struct s_player {
 	double	move_speed;
 	double	rotation_angle;
 }				t_player;
-
-typedef struct s_ray {
-	t_vec2	dir;
-	t_vec2	*pos;
-}				t_ray;
 
 typedef struct s_data {
 	t_img		img;
