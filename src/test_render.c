@@ -12,24 +12,22 @@
 
 #include "cub3d.h"
 
-void	test_render(t_data *data)
+void	draw_rect(t_data *data, int x, int y, int size, int color)
 {
-	int		x;
-	int		y;
-	t_vec2	b;
+	int	i;
+	int	j;
 
-	clear_screen(data);
-	draw_box(data);
-	draw_grid(data);
-	x = (int)(data->player.pos.x * 10) + WIDTH / 2;
-	y = (int)(data->player.pos.y * 10) + HEIGHT / 2;
-	draw_rect(data, x, y, 6, 0x0000FF00);
-	b = vec2_mul(data->player.dir, 2.5);
-	b = vec2_add(data->player.pos, b);
-	x = (int)(b.x * 10) + WIDTH / 2;
-	y = (int)(b.y * 10) + HEIGHT / 2;
-	my_mlx_pixel_put(data, x, y, 0x00FF0000);
-	draw_rays(data);
+	i = x - size / 2;
+	while (i < x + size / 2)
+	{
+		j = y - size / 2;
+		while (j < y + size / 2)
+		{
+			my_mlx_pixel_put(&data->img, i, j, color);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	draw_grid(t_data *data)
@@ -110,4 +108,25 @@ void	draw_rays(t_data *data)
 		}
 		j += 0.1;
 	}
+}
+
+
+void	test_render(t_data *data)
+{
+	int		x;
+	int		y;
+	t_vec2	b;
+
+	clear_screen(data);
+	draw_box(data);
+	draw_grid(data);
+	x = (int)(data->player.pos.x * 10) + WIDTH / 2;
+	y = (int)(data->player.pos.y * 10) + HEIGHT / 2;
+	draw_rect(data, x, y, 6, 0x0000FF00);
+	b = vec2_mul(data->player.dir, 2.5);
+	b = vec2_add(data->player.pos, b);
+	x = (int)(b.x * 10) + WIDTH / 2;
+	y = (int)(b.y * 10) + HEIGHT / 2;
+	my_mlx_pixel_put(&data->img, x, y, 0x00FF0000);
+	draw_rays(data);
 }
