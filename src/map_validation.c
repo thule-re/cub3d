@@ -48,7 +48,7 @@ int	check_valid(char **map)
 		j = -1;
 		while (map[i][++j])
 			if (map[i][j] == '0')
-				if (!check_surrounding(map, i, j))
+				if (!check_surrounding(map, j, i))
 					return (0);
 	}
 	return (1);
