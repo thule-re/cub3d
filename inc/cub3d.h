@@ -128,6 +128,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		get_pixel_value(t_img *img, int x, int y);
 char	*trim(char *str, char c);
 void	free_split(char **split);
+double	max(double a, double b);
 
 // error
 void	wrong_usage(void);

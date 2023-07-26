@@ -22,6 +22,16 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	get_pixel_value(t_img *img, int x, int y)
+{
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+		return (-1);
+	dst = img->addr + (y * img->length + x * (img->bpp / 8));
+	return (*(int *)dst);
+}
+
 char	*trim(char *str, char c)
 {
 	int		i;
@@ -52,4 +62,11 @@ void	free_split(char **split)
 	while (split[++i])
 		free(split[i]);
 	free(split);
+}
+
+double	max(double a, double b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }
