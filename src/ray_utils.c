@@ -23,6 +23,7 @@ void	init_rays(t_data *data)
 	{
 		data->rays[i].pos = &data->player.pos;
 		data->rays[i].dir = vec2_norm(dir);
+		data->rays[i].idx = i;
 		dir = vec2_rot_clockwise(dir, FOV / WIDTH);
 		i++;
 	}
