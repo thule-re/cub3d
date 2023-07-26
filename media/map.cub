@@ -1,7 +1,7 @@
-NO ./media/north_texture
-SO ./media/south_texture
-WE ./media/west_texture
-EA ./media/east_texture
+NO ./media/wall_1.xpm
+SO ./media/wall_2.xpm
+WE ./media/wall_3.xpm
+EA ./media/wall_4.xpm
 
 F 220,100,0
 C 225,30,0
