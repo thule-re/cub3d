@@ -56,33 +56,15 @@ void	draw_box(t_data *data)
 	i = 10;
 	while (i < HEIGHT - 10)
 	{
-		my_mlx_pixel_put(data, 10, i, 0x00FFFFFF);
-		my_mlx_pixel_put(data, WIDTH - 10, i, 0x00FFFFFF);
+		my_mlx_pixel_put(&data->img, 10, i, 0x00FFFFFF);
+		my_mlx_pixel_put(&data->img, WIDTH - 10, i, 0x00FFFFFF);
 		i++;
 	}
 	i = 10;
 	while (i < WIDTH - 10)
 	{
-		my_mlx_pixel_put(data, i, 10, 0x00FFFFFF);
-		my_mlx_pixel_put(data, i, HEIGHT - 10, 0x00FFFFFF);
-		i++;
-	}
-}
-
-void	draw_rect(t_data *data, int x, int y, int size, int color)
-{
-	int	i;
-	int	j;
-
-	i = x - size / 2;
-	while (i < x + size / 2)
-	{
-		j = y - size / 2;
-		while (j < y + size / 2)
-		{
-			my_mlx_pixel_put(data, i, j, color);
-			j++;
-		}
+		my_mlx_pixel_put(&data->img, i, 10, 0x00FFFFFF);
+		my_mlx_pixel_put(&data->img, i, HEIGHT - 10, 0x00FFFFFF);
 		i++;
 	}
 }
@@ -98,7 +80,7 @@ void	clear_screen(t_data *data)
 		j = 0;
 		while (j < HEIGHT)
 		{
-			my_mlx_pixel_put(data, i, j, 0x00000000);
+			my_mlx_pixel_put(&data->img, i, j, 0x00000000);
 			j++;
 		}
 		i++;
@@ -123,7 +105,7 @@ void	draw_rays(t_data *data)
 			vec = vec2_add(data->player.pos, vec);
 			x = (int)(vec.x * 10) + WIDTH / 2;
 			y = (int)(vec.y * 10) + HEIGHT / 2;
-			my_mlx_pixel_put(data, x, y, 0x0000FF00);
+			my_mlx_pixel_put(&data->img, x, y, 0x0000FF00);
 			i += 96;
 		}
 		j += 0.1;

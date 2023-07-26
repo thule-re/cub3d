@@ -29,6 +29,14 @@ typedef struct s_tile {
 	char	type;
 }				t_tile;
 
+typedef struct s_img {
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		length;
+	int		endian;
+}				t_img;
+
 typedef struct s_map {
 	t_tile	**map;
 	int		width;
@@ -71,14 +79,9 @@ typedef struct s_ray {
 }				t_ray;
 
 typedef struct s_data {
-	void		*img;
+	t_img		img;
 	void		*mlx;
 	void		*win;
-	char		*addr;
-
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
 
 	t_keyboard	keys;
 	t_player	player;
@@ -114,7 +117,8 @@ void	turn_right(t_data *data);
 void	update_ray_directions(t_data *data, t_mat2 rot);
 
 // utils
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		get_pixel_value(t_img *img, int x, int y);
 char	*trim(char *str, char c);
 void	free_split(char **split);
 

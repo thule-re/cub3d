@@ -24,9 +24,9 @@ void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
-	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, \
-	&data->line_length, &data->endian);
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
+			&data->img.length, &data->img.endian);
 }
 
 void	init_keys(t_data *data)

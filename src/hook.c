@@ -50,10 +50,14 @@ int	key_up(int k, t_data *data)
 
 int	destroy_hook(t_data *data)
 {
-	mlx_do_key_autorepeaton(data->mlx);
-	mlx_destroy_image(data->mlx, data->img);
-	mlx_destroy_window(data->mlx, data->win);
-	free(data->mlx);
+	free_map(data);
+	if (data->mlx)
+	{
+		mlx_do_key_autorepeaton(data->mlx);
+		mlx_destroy_image(data->mlx, data->img.img);
+		mlx_destroy_window(data->mlx, data->win);
+		free(data->mlx);
+	}
 	exit(0);
 }
 
