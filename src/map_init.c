@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+/// \brief Parse a color from a string in the format "R,G,B"
+/// \param data Pointer to the main data structure
+/// \param str String to parse
+/// \return The color as an int
 static int	parse_color(t_data *data, char *str)
 {
 	char	**rgb;
@@ -34,6 +38,9 @@ static int	parse_color(t_data *data, char *str)
 	return (color);
 }
 
+/// \brief Read the config file and return it as a string array
+/// \param filename Path to the config file
+/// \return The config file as a string array
 static char	**read_config(char *filename)
 {
 	int		fd;
@@ -59,6 +66,10 @@ static char	**read_config(char *filename)
 	return (content);
 }
 
+/// \brief Parse the config file and read the identifiers
+/// \param data Pointer to the main data structure
+/// \param content The config file as a string array
+/// \return The index of the first line of the map
 static int	parse_config(t_data *data, char **content)
 {
 	int		i;
@@ -85,12 +96,20 @@ static int	parse_config(t_data *data, char **content)
 	return (i);
 }
 
+/// \brief gets all the information from the config file
+/// \param data Pointer to the main data structure
+/// \param filename Path to the config file
+/// \return none
 void	init_map(t_data *data, char *filename)
 {
 	char	**content;
 	int		i;
 	int		code;
 
+	data->map.texture_no.img.img = 0;
+	data->map.texture_so.img.img = 0;
+	data->map.texture_we.img.img = 0;
+	data->map.texture_ea.img.img = 0;
 	content = read_config(filename);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
@@ -108,6 +127,10 @@ void	init_map(t_data *data, char *filename)
 	}
 }
 
+/// \brief Fills the map with the information from the config file
+/// \param data Pointer to the main data structure
+/// \param map The map as a string array
+/// \return none
 void	fill_map(t_data *data, char **map)
 {
 	int	i;

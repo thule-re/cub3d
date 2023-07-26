@@ -12,6 +12,9 @@
 
 #include "vectors.h"
 
+/// \brief creates a clockwise rotation matrix for a given angle
+/// \param angle angle in degrees
+/// \return rotation matrix
 t_mat2	rot_matrixc(double angle)
 {
 	t_mat2	matrix;
@@ -29,6 +32,9 @@ t_mat2	rot_matrixc(double angle)
 	return (matrix);
 }
 
+/// \brief creates a counter clockwise rotation matrix for a given angle
+/// \param angle angle in degrees
+/// \return rotation matrix
 t_mat2	rot_matrixcc(double angle)
 {
 	t_mat2	matrix;

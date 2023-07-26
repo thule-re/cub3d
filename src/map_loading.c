@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief loads the textures from the path in the config file to an image
+/// \param data Pointer to the main data structure
+/// \return 1 on success, 0 on failure
 static int	load_textures(t_data *data)
 {
 	t_texture	*no;
@@ -27,12 +30,16 @@ static int	load_textures(t_data *data)
 	load_texture(data, so);
 	load_texture(data, we);
 	load_texture(data, ea);
-	if (!load_texture(data, no) || !load_texture(data, so) ||
+	if (!load_texture(data, no) || !load_texture(data, so) || \
 		!load_texture(data, we) || !load_texture(data, ea))
 		return (0);
 	return (1);
 }
 
+/// \brief gather information about the map like width and height
+/// \param data Pointer to the main data structure
+/// \param map The map as a string array
+/// \return 1 on success, 0 on failure
 static int	map_telemetry(t_data *data, char **map)
 {
 	int	i;
@@ -55,6 +62,10 @@ static int	map_telemetry(t_data *data, char **map)
 	return (1);
 }
 
+/// \brief parses the player direction from the map
+/// \param data Pointer to the main data structure
+/// \param c The character representing the player direction
+/// \return none
 static void	player_direction(t_data *data, char c)
 {
 	if (c == 'S')
@@ -65,6 +76,10 @@ static void	player_direction(t_data *data, char c)
 		data->player.dir = vec2_mrot(data->player.dir, g_rot270);
 }
 
+/// \brief parses the player position from the map
+/// \param data Pointer to the main data structure
+/// \param content The map as a string array
+/// \return 1 on success, 0 on failure
 static int	player_position(t_data *data, char **content)
 {
 	int	i;
@@ -92,6 +107,10 @@ static int	player_position(t_data *data, char **content)
 	return (1);
 }
 
+/// \brief parses the map from the map string array to the map structure
+/// \param data Pointer to the main data structure
+/// \param content The map as a string array
+/// \return error code on failure, 0 on success
 int	parse_map(t_data *data, char **content)
 {
 	int	i;

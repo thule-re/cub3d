@@ -15,11 +15,16 @@
 
 # include <math.h>
 
+/// \brief 2D vector struct
+/// \param x x component of the vector
+/// \param y y component of the vector
 typedef struct s_vec2 {
 	double	x;
 	double	y;
 }				t_vec2;
 
+/// \brief 2x2 matrix struct
+/// \param m 2D array of the matrix
 typedef struct s_mat2 {
 	double	m[2][2];
 }				t_mat2;
@@ -53,7 +58,6 @@ t_vec2	vec2_add(t_vec2 a, t_vec2 b);
 t_vec2	vec2_sub(t_vec2 a, t_vec2 b);
 t_vec2	vec2_mul(t_vec2 a, double b);
 t_vec2	vec2_div(t_vec2 a, double b);
-double	vec2_dot(t_vec2 a, t_vec2 b);
 double	vec2_mag(t_vec2 a);
 t_vec2	vec2_norm(t_vec2 a);
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot);

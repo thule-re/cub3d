@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief Handle keys that are pressed
+/// \param data Pointer to the main data structure
+/// \return none
 void	handle_keys(t_data *data)
 {
 	if (data->keys.forward.is_pressed)
@@ -31,6 +34,9 @@ void	handle_keys(t_data *data)
 //if (is_wall(data, new_pos.x, new_pos.y) == 0)
 //	data->player.pos = new_pos;
 
+/// \brief Move the player forward
+/// \param data Pointer to the main data structure
+/// \return none
 void	move_forward(t_data *data)
 {
 	t_vec2	new_pos;
@@ -41,6 +47,9 @@ void	move_forward(t_data *data)
 	data->player.pos = new_pos;
 }
 
+/// \brief Move the player backward
+/// \param data Pointer to the main data structure
+/// \return none
 void	move_backward(t_data *data)
 {
 	t_vec2	new_pos;
@@ -51,6 +60,9 @@ void	move_backward(t_data *data)
 	data->player.pos = new_pos;
 }
 
+/// \brief Move the player left
+/// \param data Pointer to the main data structure
+/// \return none
 void	move_left(t_data *data)
 {
 	t_vec2	new_pos;
@@ -62,6 +74,9 @@ void	move_left(t_data *data)
 	data->player.pos = new_pos;
 }
 
+/// \brief Move the player right
+/// \param data Pointer to the main data structure
+/// \return none
 void	move_right(t_data *data)
 {
 	t_vec2	new_pos;

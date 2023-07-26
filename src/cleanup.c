@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief free all map data
+/// \param data
+/// \return none
 void	free_map(t_data *data)
 {
 	free(data->map.texture_no.path);

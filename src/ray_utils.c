@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief Initialize the rays
+/// \param data Pointer to the main data structure
+/// \return none
 void	init_rays(t_data *data)
 {
 	int		i;
@@ -29,6 +32,10 @@ void	init_rays(t_data *data)
 	}
 }
 
+/// \brief Update the ray directions
+/// \param data Pointer to the main data structure
+/// \param rot The rotation matrix
+/// \return none
 void	update_ray_directions(t_data *data, t_mat2 rot)
 {
 	int	i;

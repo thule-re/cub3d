@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief initializes all hooks
+/// \param data data struct
+/// \return none
 void	init_hooks(t_data *data)
 {
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_down, data);
@@ -20,6 +23,9 @@ void	init_hooks(t_data *data)
 	mlx_do_key_autorepeatoff(data->mlx);
 }
 
+/// \brief initializes the mlx library
+/// \param data data struct
+/// \return none
 void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -29,6 +35,9 @@ void	init_mlx(t_data *data)
 			&data->img.length, &data->img.endian);
 }
 
+/// \brief initializes all keys
+/// \param data data struct
+/// \return none
 void	init_keys(t_data *data)
 {
 	data->keys.forward.is_pressed = 0;
@@ -47,6 +56,9 @@ void	init_keys(t_data *data)
 	data->keys.esc.keycode = KEY_ESCAPE;
 }
 
+/// \brief initializes the player
+/// \param data data struct
+/// \return none
 void	init_player(t_data *data)
 {
 	data->player.pos.x = 0;
@@ -59,12 +71,12 @@ void	init_player(t_data *data)
 	data->player.cclockwise_rot = rot_matrixcc(data->player.rotation_angle);
 }
 
+/// \brief initializes all data
+/// \param data data struct
+/// \param filename name of the map file
+/// \return none
 void	init_data(t_data *data, char *filename)
 {
-	data->map.texture_no.img.img = 0;
-	data->map.texture_so.img.img = 0;
-	data->map.texture_we.img.img = 0;
-	data->map.texture_ea.img.img = 0;
 	init_player(data);
 	init_mlx(data);
 	init_map(data, filename);

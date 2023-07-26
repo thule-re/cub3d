@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+/// \brief this function is called when a key is pressed
+/// \param k keycode of the pressed key
+/// \param data data struct
+/// \return none
 int	key_down(int k, t_data *data)
 {
 	if (k == data->keys.esc.keycode)
@@ -31,6 +35,10 @@ int	key_down(int k, t_data *data)
 	return (k);
 }
 
+/// \brief this function is called when a key is released
+/// \param k keycode of the pressed key
+/// \param data data struct
+/// \return none
 int	key_up(int k, t_data *data)
 {
 	if (k == data->keys.forward.keycode)
@@ -48,6 +56,9 @@ int	key_up(int k, t_data *data)
 	return (k);
 }
 
+/// \brief this function handles when the program ends
+/// \param data data struct
+/// \return none
 int	destroy_hook(t_data *data)
 {
 	free_map(data);
@@ -61,6 +72,9 @@ int	destroy_hook(t_data *data)
 	exit(0);
 }
 
+/// \brief this function handles the mlx loop
+/// \param data data struct
+/// \return none
 int	loop_hook(t_data *data)
 {
 	handle_keys(data);

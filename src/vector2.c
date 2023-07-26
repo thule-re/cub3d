@@ -12,11 +12,17 @@
 
 #include "vectors.h"
 
+/// \brief calculates the magnitude of a vector
+/// \param a vector
+/// \return magnitude of the vector
 double	vec2_mag(t_vec2 a)
 {
 	return (sqrt(a.x * a.x + a.y * a.y));
 }
 
+/// \brief normalizes a vector
+/// \param a vector
+/// \return normalized vector
 t_vec2	vec2_norm(t_vec2 a)
 {
 	t_vec2	result;
@@ -28,6 +34,10 @@ t_vec2	vec2_norm(t_vec2 a)
 	return (result);
 }
 
+/// \brief multiplies a vector with a matrix
+/// \param a vector
+/// \param rot matrix
+/// \return result of the multiplication
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot)
 {
 	t_vec2	result;
@@ -37,6 +47,10 @@ t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot)
 	return (result);
 }
 
+/// \brief rotates a vector clockwise
+/// \param vec vector
+/// \param angle angle in degrees
+/// \return rotated vector
 t_vec2	vec2_rot_clockwise(t_vec2 vec, double angle)
 {
 	double	radians;
@@ -56,6 +70,10 @@ t_vec2	vec2_rot_clockwise(t_vec2 vec, double angle)
 	return (result);
 }
 
+/// \brief rotates a vector counter clockwise
+/// \param vec vector
+/// \param angle angle in degrees
+/// \return rotated vector
 t_vec2	vec2_rot_counter_clockwise(t_vec2 vec, double angle)
 {
 	double	radians;

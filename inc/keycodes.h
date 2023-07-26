@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: treeps <treeps@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2023/07/13 11:55:13 by treeps            #+#    #+#             */
-/*   Updated: 2023/07/13 11:55:13 by treeps           ###   ########.fr       */
+/*   Created: 2023/07/18 12:15:53 by treeps            #+#    #+#             */
+/*   Updated: 2023/07/26 16:24:00 by treeps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAC_KEYCODES_H
-# define MAC_KEYCODES_H
+#ifndef KEYCODES_H
+# define KEYCODES_H
 
 # define KEY_ESCAPE			65307
 # define KEY_W	 			119

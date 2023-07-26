@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief main function of the program
+/// \param argc argument count
+/// \param argv argument values
 int	main(int argc, char **argv)
 {
 	t_data	data;

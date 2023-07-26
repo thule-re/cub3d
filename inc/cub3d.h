@@ -25,21 +25,36 @@
 # define WIDTH  960
 # define FOV 60.0
 
+/// \brief Structure for a ray
+/// \param dir Direction of the ray
+/// \param pos Position of the ray
+/// \param idx Index of the ray
 typedef struct s_ray {
 	t_vec2	dir;
 	t_vec2	*pos;
 	int		idx;
 }				t_ray;
 
+/// \brief Structure for an intersection
+/// \param ray Ray that intersects
+/// \param pos Position of the intersection
 typedef struct s_intersect {
 	t_ray	*ray;
 	t_vec2	pos;
 }				t_intersect;
 
+/// \brief Structure for a tile
+/// \param type Type of the tile
 typedef struct s_tile {
 	char	type;
 }				t_tile;
 
+/// \brief Structure for an image
+/// \param img Pointer to the image
+/// \param addr Address of the image
+/// \param bpp Bits per pixel
+/// \param length Length of the image
+/// \param endian Endian of the image
 typedef struct s_img {
 	void	*img;
 	char	*addr;
@@ -48,6 +63,11 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
+/// \brief Structure for a texture
+/// \param img Image of the texture
+/// \param path Path to the texture
+/// \param height Height of the texture
+/// \param width Width of the texture
 typedef struct s_texture {
 	t_img	img;
 	char	*path;
@@ -55,6 +75,16 @@ typedef struct s_texture {
 	int		width;
 }				t_texture;
 
+/// \brief Structure for a map
+/// \param map Map
+/// \param width Width of the map
+/// \param height Height of the map
+/// \param texture_no Texture for north walls
+/// \param texture_so Texture for south walls
+/// \param texture_we Texture for west walls
+/// \param texture_ea Texture for east walls
+/// \param floor_color Color of the floor
+/// \param ceiling_color Color of the ceiling
 typedef struct s_map {
 	t_tile		**map;
 	int			width;
@@ -67,11 +97,22 @@ typedef struct s_map {
 	int			ceiling_color;
 }				t_map;
 
+/// \brief Structure for a key
+/// \param is_pressed 1 if the key is pressed, 0 otherwise
+/// \param keycode Keycode of the key
 typedef struct s_key {
 	int	is_pressed;
 	int	keycode;
 }				t_key;
 
+/// \brief Structure for a keyboard
+/// \param forward Key for moving forward
+/// \param backward Key for moving backward
+/// \param left Key for moving left
+/// \param right Key for moving right
+/// \param turn_left Key for turning left
+/// \param turn_right Key for turning right
+/// \param esc Key for exiting the program
 typedef struct s_keyboard {
 	t_key	forward;
 	t_key	backward;
@@ -82,6 +123,13 @@ typedef struct s_keyboard {
 	t_key	esc;
 }				t_keyboard;
 
+/// \brief Structure for a player
+/// \param pos Position of the player
+/// \param dir Direction of the player
+/// \param clockwise_rot Clockwise rotation matrix
+/// \param cclockwise_rot Counter clockwise rotation matrix
+/// \param move_speed Speed of the player
+/// \param rotation_angle Rotation angle of the player
 typedef struct s_player {
 	t_vec2	pos;
 	t_vec2	dir;
@@ -91,6 +139,14 @@ typedef struct s_player {
 	double	rotation_angle;
 }				t_player;
 
+/// \brief Structure for the data
+/// \param img Screen image
+/// \param mlx Pointer to the mlx
+/// \param win Pointer to the window
+/// \param keys Keyboard
+/// \param player Player
+/// \param rays Array of rays
+/// \param map Map
 typedef struct s_data {
 	t_img		img;
 	void		*mlx;
@@ -152,7 +208,7 @@ void	fill_map(t_data *data, char **map);
 // textures
 int		load_texture(t_data *data, t_texture *texture);
 void	draw_texture(t_img *img, t_texture texture, int x, int y);
-void	draw_texture_column(t_img *img, t_texture tex, t_intersect sect);
+void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect);
 
 // testing
 void	test_render(t_data *data);

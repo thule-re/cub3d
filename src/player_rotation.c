@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief Turn the player left
+/// \param data Pointer to the main data structure
+/// \return none
 void	turn_left(t_data *data)
 {
 	data->player.dir = vec2_mrot(data->player.dir, data->player.cclockwise_rot);
@@ -19,6 +22,9 @@ void	turn_left(t_data *data)
 	update_ray_directions(data, data->player.cclockwise_rot);
 }
 
+/// \brief Turn the player right
+/// \param data Pointer to the main data structure
+/// \return none
 void	turn_right(t_data *data)
 {
 	data->player.dir = vec2_mrot(data->player.dir, data->player.clockwise_rot);

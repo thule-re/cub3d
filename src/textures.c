@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+/// \brief Load a texture from a path to an image
+/// \param data Pointer to the main data structure
+/// \param texture Pointer to the texture structure
+/// \return 1 on success, 0 on failure
 int	load_texture(t_data *data, t_texture *texture)
 {
 	texture->img.img = mlx_xpm_file_to_image(data->mlx, texture->path,
@@ -23,6 +27,12 @@ int	load_texture(t_data *data, t_texture *texture)
 	return (1);
 }
 
+/// \brief Draw a texture to the Screen image
+/// \param img Pointer to the Screen image
+/// \param texture The texture to draw
+/// \param x The x position to draw the texture to
+/// \param y The y position to draw the texture to
+/// \return none
 void	draw_texture(t_img *img, t_texture texture, int x, int y)
 {
 	int	tex_x;
@@ -64,31 +74,43 @@ int	get_wall_type(t_intersect intersect)
 	return (0);
 }
 
-
-void	draw_texture_column(t_img *img, t_texture tex, t_intersect sect)
+/// \brief Draw a column of a wall to the Screen image
+/// \param data Pointer to the main data structure
+/// \param img Pointer to the Screen image
+/// \param tex The texture to draw
+/// \param sect The intersection of the ray and the wall
+/// \return none
+void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 {
 	double	ratio;
 	double	i;
 	int		y;
-	int		height;
+	int		wall_height;
 	int		tex_col;
 
-	height = (int)(0.5 * vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
-	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y -
+	wall_height = (int)(0.5 * vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
+	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y - \
 				(int)sect.pos.y) * tex.width);
 	i = 0;
 	y = 0;
-	ratio = ((double)tex.height / (double)height);
+	ratio = ((double)tex.height / (double)wall_height);
+	while (y < HEIGHT / 2 - wall_height / 2)
+		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
 	while (i < tex.height)
 	{
-		my_mlx_pixel_put(img, sect.ray->idx, y - height / 2 + HEIGHT / 2,
+		my_mlx_pixel_put(img, sect.ray->idx, y++ - wall_height / 2 + HEIGHT / 2,
 			(int)get_pixel_value(&tex.img, tex_col, (int)i));
-		y++;
 		i += ratio;
 	}
+	while (y < HEIGHT)
+		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.floor_color);
 }
 
-void	draw_column(t_data *data, t_intersect intersect)
+/// \brief Draw a ray to the Screen image
+/// \param data Pointer to the main data structure
+/// \param intersect The intersection of the ray and the wall
+/// \return none
+void	draw_ray(t_data *data, t_intersect intersect)
 {
 	int			type;
 	t_texture	tex[4];
@@ -98,5 +120,5 @@ void	draw_column(t_data *data, t_intersect intersect)
 	tex[2] = data->map.texture_we;
 	tex[3] = data->map.texture_ea;
 	type = get_wall_type(intersect);
-	draw_texture_column(&data->img, tex[type], intersect);
+	draw_column(data, &data->img, tex[type], intersect);
 }

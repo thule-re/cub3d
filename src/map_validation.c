@@ -12,23 +12,31 @@
 
 #include "cub3d.h"
 
-int	check_surrounding(char **map, int i, int j)
+/// \brief Check if a given cell is surrounded by walls or invalid cells
+/// \param map The map as a string array
+/// \param x The x coordinate of the cell
+/// \param y The y coordinate of the cell
+/// \return 1 if the cell is surrounded by walls or empty cells, 0 otherwise
+int	check_surrounding(char **map, int x, int y)
 {
-	if (i == 0 || j == 0)
+	if (y == 0 || x == 0)
 		return (0);
-	if (!map[i][j + 1] || !map[i + 1])
+	if (!map[y][x + 1] || !map[y + 1])
 		return (0);
-	if (map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
+	if (map[y][x + 1] == ' ' || map[y][x - 1] == ' ')
 		return (0);
-	if (map[i - 1][j + 1] == ' ' || map[i - 1][j - 1] == ' ')
+	if (map[y - 1][x + 1] == ' ' || map[y - 1][x - 1] == ' ')
 		return (0);
-	if (map[i + 1][j + 1] == ' ' || map[i + 1][j - 1] == ' ')
+	if (map[y + 1][x + 1] == ' ' || map[y + 1][x - 1] == ' ')
 		return (0);
-	if (map[i + 1][j] == ' ' || map[i - 1][j] == ' ')
+	if (map[y + 1][x] == ' ' || map[y - 1][x] == ' ')
 		return (0);
 	return (1);
 }
 
+/// \brief Check if the map is valid
+/// \param map The map as a string array
+/// \return 1 if the map is valid, 0 otherwise
 int	check_valid(char **map)
 {
 	int	i;
