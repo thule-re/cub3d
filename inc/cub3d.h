@@ -37,16 +37,23 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
-typedef struct s_map {
-	t_tile	**map;
-	int		width;
+typedef struct s_texture {
+	t_img	img;
+	char	*path;
 	int		height;
-	char	*path_no;
-	char	*path_so;
-	char	*path_we;
-	char	*path_ea;
-	int		floor_color;
-	int		ceiling_color;
+	int		width;
+}				t_texture;
+
+typedef struct s_map {
+	t_tile		**map;
+	int			width;
+	int			height;
+	t_texture	texture_no;
+	t_texture	texture_so;
+	t_texture	texture_we;
+	t_texture	texture_ea;
+	int			floor_color;
+	int			ceiling_color;
 }				t_map;
 
 typedef struct s_key {
@@ -134,6 +141,11 @@ void	clean_exit(t_data *data);
 int		parse_map(t_data *data, char **content);
 int		check_valid(char **map);
 void	fill_map(t_data *data, char **map);
+
+// textures
+int		load_texture(t_data *data, t_texture *texture);
+void	draw_texture(t_img *img, t_texture texture, int x, int y);
+void	draw_texture_column(t_img *img, t_texture tex, t_intersect sect);
 
 // testing
 void	test_render(t_data *data);

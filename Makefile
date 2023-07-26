@@ -30,10 +30,11 @@ FILES 		=	main \
 				ray_utils \
 				test_render \
 				map_validation \
-				map_parsing \
+				map_loading \
 				map_init \
 				error \
 				cleanup \
+				textures \
 
 
 HEADER		=	cub3d \
@@ -45,7 +46,7 @@ SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
 
 NAME		=	cub3D
-FLAGS		=	-Wall -Werror -Wextra -Ofast
+FLAGS		=	-Wall -Werror -Wextra -Ofast -g
 MLX_FLAGS	=	-L/usr/X11/lib -lX11 -lXext -lm
 INC			=	-I $(INC_DIR) -I $(LIBFT_DIR) -I $(MLX_DIR) -I /usr/X11/include
 

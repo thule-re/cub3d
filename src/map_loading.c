@@ -12,6 +12,27 @@
 
 #include "cub3d.h"
 
+static int	load_textures(t_data *data)
+{
+	t_texture	*no;
+	t_texture	*so;
+	t_texture	*we;
+	t_texture	*ea;
+
+	no = &data->map.texture_no;
+	so = &data->map.texture_so;
+	we = &data->map.texture_we;
+	ea = &data->map.texture_ea;
+	load_texture(data, no);
+	load_texture(data, so);
+	load_texture(data, we);
+	load_texture(data, ea);
+	if (!load_texture(data, no) || !load_texture(data, so) ||
+		!load_texture(data, we) || !load_texture(data, ea))
+		return (0);
+	return (1);
+}
+
 static int	map_telemetry(t_data *data, char **map)
 {
 	int	i;
@@ -86,5 +107,7 @@ int	parse_map(t_data *data, char **content)
 	while (++i < data->map.height)
 		data->map.map[i] = ft_calloc(data->map.width + 1, sizeof(t_tile));
 	fill_map(data, content);
+	if (!load_textures(data))
+		return (4);
 	return (0);
 }

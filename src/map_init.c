@@ -67,13 +67,13 @@ static int	parse_config(t_data *data, char **content)
 	while (content[++i])
 	{
 		if (ft_strncmp(content[i], "NO", 2) == 0)
-			data->map.path_no = trim(&content[i][2], ' ');
+			data->map.texture_no.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "SO", 2) == 0)
-			data->map.path_so = trim(&content[i][2], ' ');
+			data->map.texture_so.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "WE", 2) == 0)
-			data->map.path_we = trim(&content[i][2], ' ');
+			data->map.texture_we.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "EA", 2) == 0)
-			data->map.path_ea = trim(&content[i][2], ' ');
+			data->map.texture_ea.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "C", 1) == 0)
 			data->map.ceiling_color = parse_color(data, &content[i][1]);
 		else if (ft_strncmp(content[i], "F", 1) == 0)
@@ -96,13 +96,15 @@ void	init_map(t_data *data, char *filename)
 	if (content[i] == NULL)
 		error(data, "No map found");
 	code = parse_map(data, &content[i]);
+	free_split(content);
 	if (code != 0)
 	{
-		free_split(content);
 		if (code == 1 || code == 3)
 			error(data, "Invalid map");
 		else if (code == 2)
 			error(data, "Invalid player position");
+		else if (code == 4)
+			error(data, "Unable to load texture");
 	}
 }
 

@@ -61,10 +61,14 @@ void	init_player(t_data *data)
 
 void	init_data(t_data *data, char *filename)
 {
+	data->map.texture_no.img.img = 0;
+	data->map.texture_so.img.img = 0;
+	data->map.texture_we.img.img = 0;
+	data->map.texture_ea.img.img = 0;
 	init_player(data);
+	init_mlx(data);
 	init_map(data, filename);
 	init_rays(data);
-	init_mlx(data);
 	init_hooks(data);
 	init_keys(data);
 }
