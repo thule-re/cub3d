@@ -12,18 +12,18 @@
 
 #include "cub3d.h"
 
-static void	free_map(t_map map)
+void	free_map(t_data *data)
 {
-	free(map.path_no);
-	free(map.path_so);
-	free(map.path_we);
-	free(map.path_ea);
-}
-
-void	clean_exit(t_data *data)
-{
-	free_map(data->map);
-	if (data->mlx)
-		destroy_hook(data);
-	exit(1);
+	free(data->map.texture_no.path);
+	free(data->map.texture_so.path);
+	free(data->map.texture_we.path);
+	free(data->map.texture_ea.path);
+	if (data->map.texture_no.img.img)
+		mlx_destroy_image(data->mlx, data->map.texture_no.img.img);
+	if (data->map.texture_so.img.img)
+		mlx_destroy_image(data->mlx, data->map.texture_so.img.img);
+	if (data->map.texture_we.img.img)
+		mlx_destroy_image(data->mlx, data->map.texture_we.img.img);
+	if (data->map.texture_ea.img.img)
+		mlx_destroy_image(data->mlx, data->map.texture_ea.img.img);
 }

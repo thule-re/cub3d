@@ -32,5 +32,5 @@ void	error(t_data *data, char *msg)
 	ft_putstr_fd("cub3D: ", 2);
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
-	clean_exit(data);
+	destroy_hook(data);
 }

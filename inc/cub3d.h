@@ -136,7 +136,7 @@ void	file_error(char *filename);
 void	error(t_data *data, char *msg);
 
 // cleanup
-void	clean_exit(t_data *data);
+void	free_map(t_data *data);
 
 // map parsing
 int		parse_map(t_data *data, char **content);
@@ -150,10 +150,5 @@ void	draw_texture_column(t_img *img, t_texture tex, t_intersect sect);
 
 // testing
 void	test_render(t_data *data);
-void	draw_box(t_data *data);
-void	draw_rect(t_data *data, int x, int y, int size, int color);
-void	clear_screen(t_data *data);
-void	draw_rays(t_data *data);
-void	draw_grid(t_data *data);
 
 #endif
