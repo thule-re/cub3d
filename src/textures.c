@@ -89,16 +89,16 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	int		tex_col;
 
 	wall_height = (int)(0.5 * vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
+	ratio = ((double)tex.height / (double)wall_height);
 	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y - \
 				(int)sect.pos.y) * tex.width);
 	i = 0;
 	y = 0;
-	ratio = ((double)tex.height / (double)wall_height);
 	while (y < HEIGHT / 2 - wall_height / 2)
 		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
 	while (i < tex.height)
 	{
-		my_mlx_pixel_put(img, sect.ray->idx, y++ - wall_height / 2 + HEIGHT / 2,
+		my_mlx_pixel_put(img, sect.ray->idx, y++,
 			(int)get_pixel_value(&tex.img, tex_col, (int)i));
 		i += ratio;
 	}
