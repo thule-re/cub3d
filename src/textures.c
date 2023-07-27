@@ -6,7 +6,7 @@
 /*   By: treeps <treeps@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 13:23:25 by treeps            #+#    #+#             */
-/*   Updated: 2023/07/24 13:23:25 by treeps           ###   ########.fr       */
+/*   Updated: 2023/07/27 12:30:44 by treeps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_texture(t_img *img, t_texture texture, int x, int y)
 
 /// \brief returns the type of wall the ray hit
 /// \param intersect the intersection of the ray and the wall
-/// \return 0 for south wall, 1 for north wall, 2 for east wall, 3 for west wall
+/// \return 0 for north wall, 1 for south wall, 2 for west wall, 3 for east wall
 int	get_wall_type(t_intersect intersect)
 {
 	t_vec2	rdir;
@@ -64,14 +64,14 @@ int	get_wall_type(t_intersect intersect)
 	rdir = intersect.ray->dir;
 	ipos = intersect.pos;
 	if (rdir.x < 0 && ((ipos.x - (int)ipos.x) == 0 || rdir.y == 0))
-		return (2);
-	else if (rdir.x > 0 && ((ipos.x - (int)ipos.x) == 0 || rdir.y == 0))
 		return (3);
+	else if (rdir.x > 0 && ((ipos.x - (int)ipos.x) == 0 || rdir.y == 0))
+		return (2);
 	else if (rdir.y < 0 && ((ipos.y - (int)ipos.y) == 0 || rdir.x == 0))
-		return (0);
-	else if (rdir.y > 0 && ((ipos.y - (int)ipos.y) == 0 || rdir.x == 0))
 		return (1);
-	return (0);
+	else if (rdir.y > 0 && ((ipos.y - (int)ipos.y) == 0 || rdir.x == 0))
+		return (0);
+	return (1);
 }
 
 /// \brief Draw a column of a wall to the Screen image
