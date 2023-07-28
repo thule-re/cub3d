@@ -30,8 +30,7 @@ static int	load_textures(t_data *data)
 	load_texture(data, so);
 	load_texture(data, we);
 	load_texture(data, ea);
-	if (!load_texture(data, no) || !load_texture(data, so) || \
-		!load_texture(data, we) || !load_texture(data, ea))
+	if (!no->img.img || !so->img.img || !we->img.img || !ea->img.img)
 		return (0);
 	return (1);
 }
@@ -115,6 +114,10 @@ int	parse_map(t_data *data, char **content)
 {
 	int	i;
 
+	data->map.texture_no.img.img = 0;
+	data->map.texture_so.img.img = 0;
+	data->map.texture_we.img.img = 0;
+	data->map.texture_ea.img.img = 0;
 	if (!map_telemetry(data, content))
 		return (1);
 	if (!player_position(data, content))

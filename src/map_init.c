@@ -52,7 +52,7 @@ static char	**read_config(char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		file_error(filename);
-	tmp = malloc(1);
+	tmp = ft_calloc(1, sizeof(char));
 	while (read(fd, buf, 1) > 0)
 	{
 		buf[1] = '\0';
@@ -106,10 +106,12 @@ void	init_map(t_data *data, char *filename)
 	int		i;
 	int		code;
 
-	data->map.texture_no.img.img = 0;
-	data->map.texture_so.img.img = 0;
-	data->map.texture_we.img.img = 0;
-	data->map.texture_ea.img.img = 0;
+	data->map.texture_no.path = 0;
+	data->map.texture_so.path = 0;
+	data->map.texture_we.path = 0;
+	data->map.texture_ea.path = 0;
+	data->map.ceiling_color = 0;
+	data->map.floor_color = 0;
 	content = read_config(filename);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
