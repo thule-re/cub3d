@@ -35,11 +35,13 @@ FILES 		=	main \
 				error \
 				cleanup \
 				textures \
+				fps \
 
 
 HEADER		=	cub3d \
 				vectors \
 				keycodes \
+				fps \
 
 INCL		=	$(addsuffix .h, $(addprefix $(INC_DIR)/, $(HEADER)))
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))

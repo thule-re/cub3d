@@ -213,4 +213,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect);
 // testing
 void	test_render(t_data *data);
 
+// fps
+void	fps_module(t_data *data);
+
 #endif
