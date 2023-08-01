@@ -31,7 +31,7 @@ typedef struct s_tile {
 
 typedef struct s_map {
 	t_tile	**map;
-	char 	**new_map;
+	char	**new_map;
 	t_vec2	cell;
 	int		width;
 	int		height;
@@ -73,15 +73,15 @@ typedef struct s_ray {
 	t_vec2	*pos;
 }				t_ray;
 
-typedef struct	s_camera {
+typedef struct s_camera {
 	struct s_data	*data;
-	double 			x;
-	t_vec2 			dir;
-	t_vec2 			pos;
-	t_vec2 			plane;
+	double			x;
+	t_vec2			dir;
+	t_vec2			pos;
+	t_vec2			plane;
 	t_vec2			delta_dis;
 	t_vec2			side_dis;
-	int 			side;
+	int				side;
 
 }				t_camera;
 
@@ -99,7 +99,7 @@ typedef struct s_data {
 	t_player	player;
 	t_ray		rays[WIDTH];
 	t_map		map;
-	t_camera	camera;		// added by Tomislav
+	t_camera	camera;
 }				t_data;
 
 // init
@@ -110,6 +110,7 @@ void	init_hooks(t_data *data);
 void	init_player(t_data *data);
 void	init_rays(t_data *data);
 void	init_map(t_data *data, char *filename);
+void	init_camera(t_data *data);
 
 // hook
 int		key_down(int k, t_data *data);
@@ -146,13 +147,5 @@ void	clean_exit(t_data *data);
 int		parse_map(t_data *data, char **content);
 int		check_valid(char **map);
 void	fill_map(t_data *data, char **map);
-
-// testing
-void	test_render(t_data *data);
-void	draw_box(t_data *data);
-void	draw_rect(t_data *data, int x, int y, int size, int color);
-void	clear_screen(t_data *data);
-void	draw_rays(t_data *data);
-void	draw_grid(t_data *data);
 
 #endif
