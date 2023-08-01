@@ -47,6 +47,25 @@ void	init_keys(t_data *data)
 	data->keys.esc.keycode = KEY_ESCAPE;
 }
 
+void	init_camera(t_data *data)
+{
+	data->camera.x = 0;
+	data->camera.dir.x = 0;
+	data->camera.dir.y = 0;
+	data->camera.pos.x = 0;
+	data->camera.pos.y = 0;
+	data->camera.plane.x = 0;
+	data->camera.plane.y = 0;
+	data->camera.delta_dis.x = 0;
+	data->camera.delta_dis.y = 0;
+	data->camera.side_dis.x = 0;
+	data->camera.side_dis.y = 0;
+	data->map.cell.x = 0;
+	data->map.cell.y = 0;
+	data->player.step.x = 0;
+	data->player.step.y = 0;
+}
+
 void	init_player(t_data *data)
 {
 	data->player.pos.x = 0;

@@ -31,7 +31,8 @@ typedef struct s_tile {
 
 typedef struct s_map {
 	t_tile	**map;
-	char	**new_map;		// added by Tomislav
+	char 	**new_map;
+	t_vec2	cell;
 	int		width;
 	int		height;
 	char	*path_no;
@@ -64,7 +65,7 @@ typedef struct s_player {
 	t_mat2	cclockwise_rot;
 	double	move_speed;
 	double	rotation_angle;
-	t_vec2	step;			// added by Tomislav
+	t_vec2	step;
 }				t_player;
 
 typedef struct s_ray {
@@ -74,10 +75,10 @@ typedef struct s_ray {
 
 typedef struct	s_camera {
 	struct s_data	*data;
-	double 			camera_x;
-	t_vec2 			camera_dir;
-	t_vec2 			camera_pos;
-	t_vec2 			camera_plane;
+	double 			x;
+	t_vec2 			dir;
+	t_vec2 			pos;
+	t_vec2 			plane;
 	t_vec2			delta_dis;
 	t_vec2			side_dis;
 	int 			side;

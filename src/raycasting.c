@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: treeps <treeps@student.42wolfsburg.de>     +#+  +:+       +#+        */
+/*   By: tbolkova <tbolkova@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:00:29 by treeps            #+#    #+#             */
-/*   Updated: 2023/07/14 15:00:29 by treeps           ###   ########.fr       */
+/*   Updated: 2023/07/31 09:17:26 by tbolkova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,52 +22,52 @@ void	perform_dda(t_data *data)
 		if (data->camera.side_dis.x < data->camera.side_dis.y)
 		{
 			data->camera.side_dis.x += data->camera.delta_dis.x;
-			data->map.width += (int)data->player.step.x;
+			data->map.cell.x += (int)data->player.step.x;
 			data->camera.side = 0;
 		}
 		else
 		{
 			data->camera.side_dis.y += data->camera.delta_dis.y;
-			data->map.height += (int)data->player.step.y;
+			data->map.cell.y += (int)data->player.step.y;
 			data->camera.side = 1;
 		}
-		if (data->map.new_map[data->map.width][data->map.height])
-			if(data->map.new_map[data->map.width][data->map.height] == 1)
+		if (data->map.new_map[(int)data->map.cell.x][(int)data->map.cell.y])
+			if(data->map.new_map[(int)data->map.cell.x][(int)data->map.cell.y] == 1)
 				hit = 1;
 	}
 }
 
 void	calculate_side_distance(t_data *data)
 {
-	data->map.width = (int)data->camera.camera_pos.x;
-	data->map.height = (int)data->camera.camera_pos.y;
+	data->map.cell.x = (int)data->camera.pos.x;
+	data->map.cell.y = (int)data->camera.pos.y;
 	if(data->rays->dir.x < 0)
 	{
 		data->player.step.x = -1;
-		data->camera.side_dis.x = (data->camera.camera_pos.x - data->map.width) * data->camera.delta_dis.x;
+		data->camera.side_dis.x = (data->camera.pos.x - data->map.cell.x) * data->camera.delta_dis.x;
 	}
 	else
 	{
 		data->player.step.x = 1;
-		data->camera.side_dis.x = (data->map.width + 1.0 - data->camera.camera_pos.x) * data->camera.delta_dis.x;
+		data->camera.side_dis.x = (data->map.cell.x + 1.0 - data->camera.pos.x) * data->camera.delta_dis.x;
 	}
 	if(data->rays->dir.y < 0)
 	{
 		data->player.step.y = -1;
-		data->camera.side_dis.y = (data->camera.camera_pos.y - data->map.height) * data->camera.delta_dis.y;
+		data->camera.side_dis.y = (data->camera.pos.y - data->map.cell.y) * data->camera.delta_dis.y;
 	}
 	else
 	{
 		data->player.step.y = 1;
-		data->camera.side_dis.y = (data->map.height + 1.0 - data->camera.camera_pos.y) * data->camera.delta_dis.y;
+		data->camera.side_dis.y = (data->map.cell.y + 1.0 - data->camera.pos.y) * data->camera.delta_dis.y;
 	}
 }
 
 void	calculate_deltas(t_data *data, int x)
 {
-	data->camera.camera_x = 2 * x / (double)WIDTH - 1;
-	data->rays->dir.x = data->camera.camera_dir.x + data->camera.camera_plane.x * data->camera.camera_x;
-	data->rays->dir.y = data->camera.camera_dir.y + data->camera.camera_plane.x * data->camera.camera_x;
+	data->camera.x = 2 * x / (double)WIDTH - 1;
+	data->rays->dir.x = data->camera.dir.x + data->camera.plane.x * data->camera.x;
+	data->rays->dir.y = data->camera.dir.y + data->camera.plane.y * data->camera.x;
 	if (data->rays->dir.x == 0)
 		data->camera.delta_dis.x = INT_MAX;
 	else
