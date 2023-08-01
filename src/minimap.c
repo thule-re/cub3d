@@ -30,7 +30,7 @@ static void	draw_player(t_data *data)
 	my_mlx_pixel_put(&data->img, x + 1, y + 1, 0x0000FF00);
 }
 
-static void	draw_tile(t_data *data, int x, int y)
+static void	draw_tile(t_data *data, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ static void	draw_tile(t_data *data, int x, int y)
 	{
 		j = y - 3;
 		while (j < y + 3)
-			my_mlx_pixel_put(&data->img, i, j++, 0x00FF0000);
+			my_mlx_pixel_put(&data->img, i, j++, color);
 	}
 }
 
@@ -56,7 +56,9 @@ static void	draw_map(t_data *data)
 		while (++j < data->map.width)
 		{
 			if (data->map.map[i][j].type)
-				draw_tile(data, j * 5 + 3, i * 5 + 3);
+				draw_tile(data, j * 5 + 3, i * 5 + 3, 0x00FF0000);
+			else
+				draw_tile(data, j * 5 + 3, i * 5 + 3, 0x00000000);
 		}
 	}
 }
@@ -90,7 +92,7 @@ static void	draw_rays(t_data *data)
 
 void	draw_minimap(t_data *data)
 {
-	draw_rays(data);
 	draw_map(data);
+	draw_rays(data);
 	draw_player(data);
 }
