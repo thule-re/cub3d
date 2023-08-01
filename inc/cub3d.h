@@ -73,6 +73,11 @@ typedef struct s_ray {
 	t_vec2	*pos;
 }				t_ray;
 
+typedef struct s_intersect {
+	t_ray	*ray;
+	t_vec2	pos;
+}				t_intersect;
+
 typedef struct s_camera {
 	struct s_data	*data;
 	double			x;
@@ -147,5 +152,8 @@ void	clean_exit(t_data *data);
 int		parse_map(t_data *data, char **content);
 int		check_valid(char **map);
 void	fill_map(t_data *data, char **map);
+
+// textures
+void	draw_ray(t_data *data, t_intersect intersect);
 
 #endif

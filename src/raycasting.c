@@ -31,11 +31,13 @@ void	init_camera(t_data *data)
 	data->player.step.y = 0;
 }
 
-void	perform_dda(t_data *data)
+void	perform_dda(t_data *data, int x)
 {
-	int	hit;
+	int			hit;
+	t_intersect	sect;
 
 	hit = 0;
+	sect.ray = &data->rays[x];
 	while (hit == 0)
 	{
 		if (data->camera.side_dis.x < data->camera.side_dis.y)
@@ -53,7 +55,8 @@ void	perform_dda(t_data *data)
 		if (data->map.new_map[(int)data->map.cell.y][(int)data->map.cell.x])
 			hit = 1;
 	}
-	// draw_ray()
+	sect.pos = data->map.cell;
+	draw_ray(data, sect);
 }
 
 void	calculate_side_distance(t_data *data)
@@ -111,7 +114,7 @@ void	raycasting(t_data *data)
 	{
 		calculate_deltas(data, x);
 		calculate_side_distance(data);
-		perform_dda(data);
+		perform_dda(data, x);
 		x++;
 	}
 }
