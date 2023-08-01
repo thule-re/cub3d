@@ -19,15 +19,22 @@ void	init_rays(t_data *data)
 {
 	int		i;
 	t_vec2	dir;
+	t_vec2	tmp;
+	double	len;
+	t_vec2	step;
 
 	dir = vec2_rot_counter_clockwise(data->player.dir, FOV / 2);
+	tmp = vec2_rot_clockwise(data->player.dir, FOV / 2);
+	len = vec2_mag(vec2_sub(dir, tmp));
+	step = vec2_mrot(data->player.dir, g_rot90);
+	step = vec2_mul(step, len / WIDTH);
 	i = 0;
 	while (i < WIDTH)
 	{
 		data->rays[i].pos = &data->player.pos;
 		data->rays[i].dir = vec2_norm(dir);
 		data->rays[i].idx = i;
-		dir = vec2_rot_clockwise(dir, FOV / WIDTH);
+		dir = vec2_add(dir, step);
 		i++;
 	}
 }
