@@ -63,7 +63,6 @@ int	get_wall_type(t_intersect intersect)
 
 	rdir = intersect.ray->dir;
 	ipos = intersect.pos;
-
 	return (0);
 	if (!(ipos.x - (int)ipos.x) || rdir.y == 0)
 	{
@@ -93,16 +92,16 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	double	ratio;
 	double	i;
 	int		y;
-	int		wall_height;
+	int		w_height;
 	int		tex_col;
 
-	wall_height = (int)(2 * HEIGHT / vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
-	ratio = ((double)tex.height / (double)wall_height);
+	w_height = (int)(2 * HEIGHT / vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
+	ratio = ((double)tex.height / (double)w_height);
 	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y - \
 				(int)sect.pos.y) * tex.width);
 	i = 0;
 	y = 0;
-	while (y < HEIGHT / 2 - wall_height / 2)
+	while (y < HEIGHT / 2 - w_height / 2)
 		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
 	while (i < tex.height)
 	{

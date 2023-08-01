@@ -213,6 +213,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect);
 
 // minimap
 void	draw_minimap(t_data *data);
+int		is_wall(t_map map, t_vec2 pos);
 
 // fps
 void	fps_module(t_data *data);
