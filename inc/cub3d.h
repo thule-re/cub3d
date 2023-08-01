@@ -208,7 +208,6 @@ void	fill_map(t_data *data, char **map);
 // textures
 void	draw_ray(t_data *data, t_intersect intersect);
 int		load_texture(t_data *data, t_texture *texture);
-void	draw_texture(t_img *img, t_texture texture, int x, int y);
 void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect);
 
 // minimap

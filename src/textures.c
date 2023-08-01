@@ -27,32 +27,6 @@ int	load_texture(t_data *data, t_texture *texture)
 	return (1);
 }
 
-/// \brief Draw a texture to the Screen image
-/// \param img Pointer to the Screen image
-/// \param texture The texture to draw
-/// \param x The x position to draw the texture to
-/// \param y The y position to draw the texture to
-/// \return none
-void	draw_texture(t_img *img, t_texture texture, int x, int y)
-{
-	int	tex_x;
-	int	tex_y;
-	int	color;
-
-	tex_x = 0;
-	while (tex_x < texture.width)
-	{
-		tex_y = 0;
-		while (tex_y < texture.height)
-		{
-			color = get_pixel_value(&texture.img, tex_x, tex_y);
-			my_mlx_pixel_put(img, x + tex_x, y + tex_y, color);
-			tex_y++;
-		}
-		tex_x++;
-	}
-}
-
 /// \brief returns the type of wall the ray hit
 /// \param intersect the intersection of the ray and the wall
 /// \return 0 for north wall, 1 for south wall, 2 for west wall, 3 for east wall
