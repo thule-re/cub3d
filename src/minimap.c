@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// \brief this function draws the player to the minimap
+/// \param data data struct
+/// \return none
 static void	draw_player(t_data *data)
 {
 	int	x;
@@ -30,6 +33,12 @@ static void	draw_player(t_data *data)
 	my_mlx_pixel_put(&data->img, x + 1, y + 1, 0x0000FF00);
 }
 
+/// \brief this function draws a tile to the minimap
+/// \param data data struct
+/// \param x x position of the tile
+/// \param y y position of the tile
+/// \param color color of the tile
+/// \return none
 static void	draw_tile(t_data *data, int x, int y, int color)
 {
 	int	i;
@@ -44,6 +53,9 @@ static void	draw_tile(t_data *data, int x, int y, int color)
 	}
 }
 
+/// \brief this function draws the map tiles to the minimap
+/// \param data data struct
+/// \return none
 static void	draw_map(t_data *data)
 {
 	int	i;
@@ -63,6 +75,9 @@ static void	draw_map(t_data *data)
 	}
 }
 
+/// \brief this function draws the rays to the minimap
+/// \param data data struct
+/// \return none
 static void	draw_rays(t_data *data)
 {
 	t_vec2	vec;
@@ -90,6 +105,9 @@ static void	draw_rays(t_data *data)
 	}
 }
 
+/// \brief this function draws the minimap
+/// \param data data struct
+/// \return none
 void	draw_minimap(t_data *data)
 {
 	draw_map(data);
