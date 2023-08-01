@@ -28,7 +28,7 @@ FILES 		=	main \
 				player_rotation \
 				raycasting \
 				ray_utils \
-				test_render \
+				minimap \
 				map_validation \
 				map_loading \
 				map_init \

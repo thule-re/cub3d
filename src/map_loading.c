@@ -95,8 +95,8 @@ static int	player_position(t_data *data, char **content)
 			{
 				if (data->player.pos.x != -1)
 					return (0);
-				data->player.pos.x = j;
-				data->player.pos.y = i;
+				data->player.pos.x = j + 0.5;
+				data->player.pos.y = i + 0.5;
 				player_direction(data, content[i][j]);
 			}
 		}
