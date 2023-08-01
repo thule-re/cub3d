@@ -63,15 +63,23 @@ int	get_wall_type(t_intersect intersect)
 
 	rdir = intersect.ray->dir;
 	ipos = intersect.pos;
-	if (rdir.x < 0 && ((ipos.x - (int)ipos.x) == 0 || rdir.y == 0))
-		return (3);
-	else if (rdir.x > 0 && ((ipos.x - (int)ipos.x) == 0 || rdir.y == 0))
-		return (2);
-	else if (rdir.y < 0 && ((ipos.y - (int)ipos.y) == 0 || rdir.x == 0))
-		return (1);
-	else if (rdir.y > 0 && ((ipos.y - (int)ipos.y) == 0 || rdir.x == 0))
-		return (0);
-	return (1);
+
+	return (0);
+	if (!(ipos.x - (int)ipos.x) || rdir.y == 0)
+	{
+		if (rdir.x < 0)
+			return (3);
+		else
+			return (2);
+	}
+	else if (!(ipos.y - (int)ipos.y) || rdir.x == 0)
+	{
+		if (rdir.y < 0)
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
 }
 
 /// \brief Draw a column of a wall to the Screen image
@@ -88,7 +96,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	int		wall_height;
 	int		tex_col;
 
-	wall_height = (int)(0.5 * vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
+	wall_height = (int)(2 * HEIGHT / vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
 	ratio = ((double)tex.height / (double)wall_height);
 	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y - \
 				(int)sect.pos.y) * tex.width);
