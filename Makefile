@@ -29,6 +29,7 @@ FILES 		=	main \
 				raycasting \
 				ray_utils \
 				minimap \
+				minimap_utils \
 				map_validation \
 				map_loading \
 				map_init \

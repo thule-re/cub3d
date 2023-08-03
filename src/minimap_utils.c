@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+/// \brief this function checks if the given tile is a wall
+/// \param map map struct
+/// \param pos position of the tile
+/// \return 1 if the tile is a wall, 0 if not
 int	is_wall(t_map map, t_vec2 pos)
 {
 	double	x;
