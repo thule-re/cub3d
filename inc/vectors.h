@@ -20,6 +20,11 @@ typedef struct s_vec2 {
 	double	y;
 }				t_vec2;
 
+typedef struct	s_vec2_int {		// added by Tomislav
+	int x;
+	int y;
+}				t_vec2_int;
+
 typedef struct s_mat2 {
 	double	m[2][2];
 }				t_mat2;
