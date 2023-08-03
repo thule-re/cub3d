@@ -27,7 +27,6 @@ FILES 		=	main \
 				player_movement \
 				player_rotation \
 				raycasting \
-				raycasting_treeps \
 				ray_utils \
 				minimap \
 				minimap_utils \
