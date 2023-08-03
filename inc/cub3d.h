@@ -217,4 +217,8 @@ void	draw_minimap(t_data *data);
 // fps
 void	fps_module(t_data *data);
 
+// raycasting
+int		is_wall(t_map map, t_vec2 pos);
+void	raycasting(t_data *data);
+
 #endif
