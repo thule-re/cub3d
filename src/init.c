@@ -65,8 +65,8 @@ void	init_player(t_data *data)
 	data->player.pos.y = 0;
 	data->player.dir.x = 0;
 	data->player.dir.y = -1;
-	data->player.move_speed = 0.05;
-	data->player.rotation_angle = 2.5;
+	data->player.move_speed = 0.02;
+	data->player.rotation_angle = 0.5;
 	data->player.clockwise_rot = rot_matrixc(data->player.rotation_angle);
 	data->player.cclockwise_rot = rot_matrixcc(data->player.rotation_angle);
 }

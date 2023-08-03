@@ -27,6 +27,7 @@ FILES 		=	main \
 				player_movement \
 				player_rotation \
 				raycasting \
+				raycasting_treeps \
 				ray_utils \
 				minimap \
 				minimap_utils \
@@ -63,7 +64,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
-	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
+	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
 	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
 
 $(MLX):
