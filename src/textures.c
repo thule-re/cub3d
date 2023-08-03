@@ -12,6 +12,23 @@
 
 #include "cub3d.h"
 
+double	perpendicular_distance(t_intersect intersect)
+{
+	t_vec2	rdir;
+	t_vec2	rpos;
+	t_vec2	ipos;
+	double	dist;
+
+	rdir = intersect.ray->dir;
+	rpos = *intersect.ray->pos;
+	ipos = intersect.pos;
+	if (!(ipos.x - (int)ipos.x) || rdir.y == 0)
+		dist = fabs(ipos.x - rpos.x);
+	else if (!(ipos.y - (int)ipos.y) || rdir.x == 0)
+		dist = fabs(ipos.y - rpos.y);
+	return (dist);
+}
+
 /// \brief Load a texture from a path to an image
 /// \param data Pointer to the main data structure
 /// \param texture Pointer to the texture structure
