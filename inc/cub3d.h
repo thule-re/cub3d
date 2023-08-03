@@ -87,6 +87,7 @@ typedef struct s_texture {
 /// \param ceiling_color Color of the ceiling
 typedef struct s_map {
 	t_tile		**map;
+	t_vec2		cell;
 	int			width;
 	int			height;
 	t_texture	texture_no;
@@ -139,6 +140,18 @@ typedef struct s_player {
 	double	rotation_angle;
 }				t_player;
 
+typedef struct s_camera {
+	struct s_data	*data;
+	double			x;
+	t_vec2			dir;
+	t_vec2			pos;
+	t_vec2			plane;
+	t_vec2			delta_dis;
+	t_vec2			side_dis;
+	t_vec2_int			step;
+	int				side;
+}				t_camera;
+
 /// \brief Structure for the data
 /// \param img Screen image
 /// \param mlx Pointer to the mlx
@@ -156,6 +169,7 @@ typedef struct s_data {
 	t_player	player;
 	t_ray		rays[WIDTH];
 	t_map		map;
+	t_camera	camera;
 }				t_data;
 
 // init
@@ -166,6 +180,7 @@ void	init_hooks(t_data *data);
 void	init_player(t_data *data);
 void	init_rays(t_data *data);
 void	init_map(t_data *data, char *filename);
+void	init_camera(t_data *data);
 
 // hook
 int		key_down(int k, t_data *data);

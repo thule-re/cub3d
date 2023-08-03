@@ -83,4 +83,5 @@ void	init_data(t_data *data, char *filename)
 	init_rays(data);
 	init_hooks(data);
 	init_keys(data);
+	init_camera(data);
 }

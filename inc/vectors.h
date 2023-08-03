@@ -23,6 +23,11 @@ typedef struct s_vec2 {
 	double	y;
 }				t_vec2;
 
+typedef struct	s_vec2_int {
+	int x;
+	int y;
+}				t_vec2_int;
+
 /// \brief 2x2 matrix struct
 /// \param m 2D array of the matrix
 typedef struct s_mat2 {
