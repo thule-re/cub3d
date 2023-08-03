@@ -87,7 +87,6 @@ typedef struct s_texture {
 /// \param ceiling_color Color of the ceiling
 typedef struct s_map {
 	t_tile		**map;
-	t_vec2		cell;
 	int			width;
 	int			height;
 	t_texture	texture_no;
@@ -140,18 +139,6 @@ typedef struct s_player {
 	double	rotation_angle;
 }				t_player;
 
-typedef struct s_camera {
-	struct s_data	*data;
-	double			x;
-	t_vec2			dir;
-	t_vec2			pos;
-	t_vec2			plane;
-	t_vec2			delta_dis;
-	t_vec2			side_dis;
-	t_vec2_int			step;
-	int				side;
-}				t_camera;
-
 /// \brief Structure for the data
 /// \param img Screen image
 /// \param mlx Pointer to the mlx
@@ -169,7 +156,6 @@ typedef struct s_data {
 	t_player	player;
 	t_ray		rays[WIDTH];
 	t_map		map;
-	t_camera	camera;
 }				t_data;
 
 // init
