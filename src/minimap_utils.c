@@ -27,5 +27,11 @@ int	is_wall(t_map map, t_vec2 pos)
 		return (1);
 	if (map.map[(int)y][(int)x].type == 1)
 		return (1);
+	if (y - (int)y == 0)
+		if (map.map[(int)y - 1][(int)x].type == 1)
+			return (1);
+	if (x - (int)x == 0)
+		if (map.map[(int)y][(int)x - 1].type == 1)
+			return (1);
 	return (0);
 }
