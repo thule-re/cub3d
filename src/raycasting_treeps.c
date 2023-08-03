@@ -53,7 +53,7 @@ static void	cast_ray(t_data *data, t_ray ray)
 	draw_ray(data, intersect);
 }
 
-void	raycasting(t_data *data)
+void	raycasting_treeps(t_data *data)
 {
 	int	i;
 
