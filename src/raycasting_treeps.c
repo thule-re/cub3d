@@ -18,7 +18,12 @@ static t_vec2	check_x_intersect(t_map map, t_ray ray)
 	t_vec2		step;
 
 	step = vec2_div(ray.dir, fabs(ray.dir.x));
-	start = vec2_add(*ray.pos, vec2_mul(step, 1 - (fabs(ray.pos->x) - (int)fabs(ray.pos->x))));
+	if (ray.dir.x < 0)
+		start = vec2_add(*ray.pos, vec2_mul(step, (fabs(ray.pos->x) - \
+		(int)fabs(ray.pos->x))));
+	else
+		start = vec2_add(*ray.pos, vec2_mul(step, 1 - (fabs(ray.pos->x) - \
+		(int)fabs(ray.pos->x))));
 	while (!is_wall(map, start))
 		start = vec2_add(start, step);
 	return (start);
@@ -30,7 +35,12 @@ static t_vec2	check_y_intersect(t_map map, t_ray ray)
 	t_vec2	step;
 
 	step = vec2_div(ray.dir, fabs(ray.dir.y));
-	start = vec2_add(*ray.pos, vec2_mul(step, 1 - (fabs(ray.pos->y) - (int)fabs(ray.pos->y))));
+	if (ray.dir.y < 0)
+		start = vec2_add(*ray.pos, vec2_mul(step, (fabs(ray.pos->y) - \
+		(int)fabs(ray.pos->y))));
+	else
+		start = vec2_add(*ray.pos, vec2_mul(step, 1 - (fabs(ray.pos->y) - \
+		(int)fabs(ray.pos->y))));
 	while (!is_wall(map, start))
 		start = vec2_add(start, step);
 	return (start);
