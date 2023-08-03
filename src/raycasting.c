@@ -20,8 +20,6 @@ void	init_camera(t_data *data)
 	data->camera.delta_dis.y = 0;	//	Y distance of the ray that has to travel from one Y-side to the next.
 	data->camera.side_dis.x = 0;	//	X distance of the ray that has to travel from player position to first X-side.
 	data->camera.side_dis.y = 0;	//	Y distance of the ray that has to travel from player position to first Y-side.
-	data->map.cell.x = 0;	//	X value of the cell of the map
-	data->map.cell.y = 0;	//	Y value of the cell of the map
 	data->camera.step.x = 0;	//	Direction our ray will move depending on the X value
 	data->camera.step.y = 0;	//	Direction our ray will move depending on the Y value
 	data->camera.side = 0;	//	A variable which will indicate whether an X-side or Y-side of a wall was hit.
@@ -29,51 +27,58 @@ void	init_camera(t_data *data)
 
 void	perform_dda(t_data *data, int x)		// DDA = digital differential analyzer
 {
-	int hit;	// Variable to detect if the ray has hit a wall
+	int			hit;	// Variable to detect if the ray has hit a wall
+	t_intersect	intersect;
+	t_vec2		cell;
 
+	intersect.ray = &data->rays[x];
 	hit = 0;
 	while (hit == 0)
 	{
 		if (data->camera.side_dis.x < data->camera.side_dis.y)
 		{
 			data->camera.side_dis.x += data->camera.delta_dis.x;
-			data->map.cell.x += data->camera.step.x;
+			cell.x += data->camera.step.x;
 			data->camera.side = 0;
 		}
 		else
 		{
 			data->camera.side_dis.y += data->camera.delta_dis.y;
-			data->map.cell.y += data->camera.step.y;
+			cell.y += data->camera.step.y;
 			data->camera.side = 1;
 		}
-		if (data->map.map[(int)data->map.cell.x][(int)data->map.cell.y].type == 1)
+		if (is_wall(data->map, cell))
 			hit = 1;
 	}
+	intersect.pos = cell;
+	draw_ray(data, intersect);
 }
 
 void	calculate_side_distance(t_data *data)
 {
-	data->map.cell.x = (int)data->player.pos.x;		// INT value of the cell of the map we are currently in (X value)
-	data->map.cell.y = (int)data->player.pos.y;		// INT value of the cell of the map we are currently in (Y value)
+	t_vec2	cell;
+
+	cell.x = (int)data->player.pos.x;		// INT value of the cell of the map we are currently in (X value)
+	cell.y = (int)data->player.pos.y;		// INT value of the cell of the map we are currently in (Y value)
 	if (data->rays->dir.x < 0)	//	If our ray direction has a negative X component
 	{
 		data->camera.step.x = -1;	//	Move -1 on the X-axis
-		data->camera.side_dis.x = (data->player.pos.x - data->map.cell.x) * data->camera.delta_dis.x;
+		data->camera.side_dis.x = (data->player.pos.x - cell.x) * data->camera.delta_dis.x;
 	}
 	else
 	{
 		data->camera.step.x = 1;
-		data->camera.side_dis.x = (data->map.cell.x + 1 - data->player.pos.x) * data->camera.delta_dis.x;
+		data->camera.side_dis.x = (cell.x + 1 - data->player.pos.x) * data->camera.delta_dis.x;
 	}
 	if (data->rays->dir.y < 0)
 	{
 		data->camera.step.y = -1;
-		data->camera.side_dis.y = (data->player.pos.y - data->map.cell.y) * data->camera.delta_dis.y;
+		data->camera.side_dis.y = (data->player.pos.y - cell.y) * data->camera.delta_dis.y;
 	}
 	else
 	{
 		data->camera.step.y = 1;
-		data->camera.side_dis.y = (data->map.cell.y + 1 - data->player.pos.y) * data->camera.delta_dis.y;
+		data->camera.side_dis.y = (cell.y + 1 - data->player.pos.y) * data->camera.delta_dis.y;
 	}
 }
 
