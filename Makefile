@@ -64,7 +64,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
-	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
+	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
 
 $(MLX):
