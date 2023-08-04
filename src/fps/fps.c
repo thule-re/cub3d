@@ -39,6 +39,6 @@ void	fps_module(t_data *data)
 	}
 	else
 		fps_count++;
-	mlx_string_put(data->mlx, data->win, 10, 10, 0x00FFFFFF, "FPS:");
-	mlx_string_put(data->mlx, data->win, 50, 10, 0x00FFFFFF, ft_itoa(fps));
+	mlx_string_put(data->mlx, data->win, 10, 10, 0x0000FF00, "FPS:");
+	mlx_string_put(data->mlx, data->win, 50, 10, 0x0000FF00, ft_itoa(fps));
 }

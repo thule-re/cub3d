@@ -13,31 +13,42 @@ CYAN		=	\033[36m
 UP			=	\033[A
 CUT			=	\033[K
 
-SRC_DIR 	=	./src
-OBJ_DIR 	=	./obj
-INC_DIR 	=	./inc
+SRC_DIR		=	./src
+INC_DIR		=	./inc
+OBJ_DIR		=	./obj
+OBJ_DIRS	=	./obj \
+				./obj/fps \
+				./obj/init \
+				./obj/main \
+				./obj/map \
+				./obj/minimap \
+				./obj/player \
+				./obj/raycasting \
+				./obj/textures \
+				./obj/utils \
+				./obj/vectors \
 
-FILES 		=	main \
-				hook \
-				utils \
-				init \
-				vector1 \
-				vector2 \
-				vector3 \
-				player_movement \
-				player_rotation \
-				raycasting \
-				ray_utils \
-				minimap \
-				minimap_utils \
-				map_validation \
-				map_loading \
-				map_init \
-				error \
-				cleanup \
-				textures \
-				textures_utils \
-				fps \
+FILES 		=	fps/fps \
+				init/hook \
+				init/init \
+				main/main \
+				map/map_init \
+				map/map_loading \
+				map/map_validation \
+				minimap/minimap \
+				minimap/minimap_utils \
+				player/movement \
+				player/rotation \
+				raycasting/raycasting \
+				raycasting/ray_utils \
+				textures/textures \
+				textures/textures_utils \
+				utils/cleanup \
+				utils/error \
+				utils/utils \
+				vectors/vector1 \
+				vectors/vector2 \
+				vectors/vector3 \
 
 
 HEADER		=	cub3d \
@@ -76,7 +87,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCL)
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIRS)
 	@echo "$(YELLOW)Compiling [$@]...$(RESET)"
 	@cc $(FLAGS) $(INC) -o $@ -c $<
 	@printf "$(UP)$(CUT)"

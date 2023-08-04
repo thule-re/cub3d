@@ -25,7 +25,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
 		return ;
 	dst = img->addr + (y * img->length + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
+	*(int *)dst = color;
 }
 
 /// \brief Get the color of a pixel on the given image
