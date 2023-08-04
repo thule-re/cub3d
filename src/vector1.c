@@ -63,3 +63,12 @@ t_vec2	vec2_div(t_vec2 a, double b)
 	result.y = a.y / b;
 	return (result);
 }
+
+/// \brief calculates the dot product of two vectors
+/// \param a first vector
+/// \param b second vector
+/// \return result of the dot product
+double	vec2_dot(t_vec2 a, t_vec2 b)
+{
+	return (a.x * b.x + a.y * b.y);
+}

@@ -63,6 +63,7 @@ t_vec2	vec2_add(t_vec2 a, t_vec2 b);
 t_vec2	vec2_sub(t_vec2 a, t_vec2 b);
 t_vec2	vec2_mul(t_vec2 a, double b);
 t_vec2	vec2_div(t_vec2 a, double b);
+double	vec2_dot(t_vec2 a, t_vec2 b);
 double	vec2_mag(t_vec2 a);
 t_vec2	vec2_norm(t_vec2 a);
 t_vec2	vec2_mrot(t_vec2 a, t_mat2 rot);

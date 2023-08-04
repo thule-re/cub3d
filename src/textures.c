@@ -12,21 +12,16 @@
 
 #include "cub3d.h"
 
-double	perpendicular_distance(t_intersect intersect)
+double	perpendicular_distance(t_intersect intersect, t_player player)
 {
-	t_vec2	rdir;
-	t_vec2	rpos;
-	t_vec2	ipos;
-	double	dist;
+	double	dot_product;
+	double	divisor;
+	double	distance;
 
-	rdir = intersect.ray->dir;
-	rpos = *intersect.ray->pos;
-	ipos = intersect.pos;
-	if (!(ipos.x - (int)ipos.x) || rdir.y == 0)
-		dist = fabs(ipos.x - rpos.x);
-	else if (!(ipos.y - (int)ipos.y) || rdir.x == 0)
-		dist = fabs(ipos.y - rpos.y);
-	return (dist);
+	dot_product = vec2_dot(intersect.ray->dir, player.dir);
+	divisor = vec2_mag(intersect.ray->dir) * vec2_mag(player.dir);
+	distance = vec2_mag(vec2_sub(intersect.pos, *intersect.ray->pos));
+	return (dot_product / divisor * distance);
 }
 
 /// \brief Load a texture from a path to an image
@@ -85,7 +80,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	int		w_height;
 	int		tex_col;
 
-	w_height = (int)(2 * HEIGHT / vec2_mag(vec2_sub(sect.pos, *sect.ray->pos)));
+	w_height = (int)(2 * HEIGHT / perpendicular_distance(sect, data->player));
 	ratio = ((double)tex.height / (double)w_height);
 	if ((w_height > HEIGHT))
 		i = (w_height - HEIGHT) / 2.0 * ratio;
@@ -96,7 +91,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	y = 0;
 	while (y < HEIGHT / 2 - w_height / 2)
 		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
-	while (i < tex.height)
+	while (i < tex.height && y < HEIGHT)
 	{
 		my_mlx_pixel_put(img, sect.ray->idx, y++,
 			(int)get_pixel_value(&tex.img, tex_col, (int)i));
