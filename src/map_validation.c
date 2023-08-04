@@ -12,7 +12,18 @@
 
 #include "cub3d.h"
 
-/// \brief Check if a given cell is surrounded by walls or invalid cells
+/// \brief Check if a given character is valid
+/// \param c The character to check
+/// \return 1 if the character is valid, 0 otherwise
+static int	valid_char(char c)
+{
+	if (c == ' ' || c == '0' || c == '1' || c == 'N' || c == 'S' || \
+	c == 'E' || c == 'W')
+		return (1);
+	return (0);
+}
+
+/// \brief Check if a given cell is surrounded by walls, empty or invalid cells
 /// \param map The map as a string array
 /// \param x The x coordinate of the cell
 /// \param y The y coordinate of the cell
@@ -23,13 +34,13 @@ int	check_surrounding(char **map, int x, int y)
 		return (0);
 	if (!map[y][x + 1] || !map[y + 1])
 		return (0);
-	if (map[y][x + 1] == ' ' || map[y][x - 1] == ' ')
+	if (map[y - 1][x + 1] < '0' || map[y - 1][x] < '0' || \
+	map[y - 1][x - 1] < '0')
 		return (0);
-	if (map[y - 1][x + 1] == ' ' || map[y - 1][x - 1] == ' ')
+	if (map[y][x + 1] < '0' || map[y][x - 1] < '0')
 		return (0);
-	if (map[y + 1][x + 1] == ' ' || map[y + 1][x - 1] == ' ')
-		return (0);
-	if (map[y + 1][x] == ' ' || map[y - 1][x] == ' ')
+	if (map[y + 1][x + 1] < '0' || map[y + 1][x] < '0' || \
+	map[y + 1][x - 1] < '0')
 		return (0);
 	return (1);
 }
@@ -47,9 +58,13 @@ int	check_valid(char **map)
 	{
 		j = -1;
 		while (map[i][++j])
+		{
+			if (!valid_char(map[i][j]))
+				return (0);
 			if (map[i][j] == '0')
 				if (!check_surrounding(map, j, i))
 					return (0);
+		}
 	}
 	return (1);
 }
