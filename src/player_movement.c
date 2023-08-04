@@ -41,11 +41,24 @@ void	move_forward(t_data *data)
 {
 	t_vec2	new_pos;
 	t_vec2	dir;
+	t_vec2	tmp_x;
+	t_vec2	tmp_y;
 
 	dir = vec2_mul(data->player.dir, data->player.move_speed);
 	new_pos = vec2_add(data->player.pos, dir);
 	if (!is_wall(data->map, new_pos))
 		data->player.pos = new_pos;
+	else
+	{
+		tmp_x.x = new_pos.x;
+		tmp_x.y = data->player.pos.y;
+		tmp_y.y = new_pos.y;
+		tmp_y.x = data->player.pos.x;
+		if (!is_wall(data->map, tmp_x))
+			data->player.pos = tmp_x;
+		else if (!is_wall(data->map, tmp_y))
+			data->player.pos = tmp_y;
+	}
 }
 
 /// \brief Move the player backward
@@ -55,11 +68,24 @@ void	move_backward(t_data *data)
 {
 	t_vec2	new_pos;
 	t_vec2	dir;
+	t_vec2	tmp_x;
+	t_vec2	tmp_y;
 
 	dir = vec2_mul(data->player.dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	if (!is_wall(data->map, new_pos))
 		data->player.pos = new_pos;
+	else
+	{
+		tmp_x.x = new_pos.x;
+		tmp_x.y = data->player.pos.y;
+		tmp_y.y = new_pos.y;
+		tmp_y.x = data->player.pos.x;
+		if (!is_wall(data->map, tmp_x))
+			data->player.pos = tmp_x;
+		else if (!is_wall(data->map, tmp_y))
+			data->player.pos = tmp_y;
+	}
 }
 
 /// \brief Move the player left
@@ -69,12 +95,25 @@ void	move_left(t_data *data)
 {
 	t_vec2	new_pos;
 	t_vec2	dir;
+	t_vec2	tmp_x;
+	t_vec2	tmp_y;
 
 	dir = vec2_mrot(data->player.dir, g_rot90);
 	dir = vec2_mul(dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	if (!is_wall(data->map, new_pos))
 		data->player.pos = new_pos;
+	else
+	{
+		tmp_x.x = new_pos.x;
+		tmp_x.y = data->player.pos.y;
+		tmp_y.y = new_pos.y;
+		tmp_y.x = data->player.pos.x;
+		if (!is_wall(data->map, tmp_x))
+			data->player.pos = tmp_x;
+		else if (!is_wall(data->map, tmp_y))
+			data->player.pos = tmp_y;
+	}
 }
 
 /// \brief Move the player right
@@ -84,10 +123,23 @@ void	move_right(t_data *data)
 {
 	t_vec2	new_pos;
 	t_vec2	dir;
+	t_vec2	tmp_x;
+	t_vec2	tmp_y;
 
 	dir = vec2_mrot(data->player.dir, g_rot270);
 	dir = vec2_mul(dir, data->player.move_speed);
 	new_pos = vec2_sub(data->player.pos, dir);
 	if (!is_wall(data->map, new_pos))
 		data->player.pos = new_pos;
+	else
+	{
+		tmp_x.x = new_pos.x;
+		tmp_x.y = data->player.pos.y;
+		tmp_y.y = new_pos.y;
+		tmp_y.x = data->player.pos.x;
+		if (!is_wall(data->map, tmp_x))
+			data->player.pos = tmp_x;
+		else if (!is_wall(data->map, tmp_y))
+			data->player.pos = tmp_y;
+	}
 }

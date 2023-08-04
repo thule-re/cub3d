@@ -80,7 +80,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	int		w_height;
 	int		tex_col;
 
-	w_height = (int)(2 * HEIGHT / perpendicular_distance(sect, data->player));
+	w_height = (int)(1.7 * HEIGHT / perpendicular_distance(sect, data->player));
 	ratio = ((double)tex.height / (double)w_height);
 	if ((w_height > HEIGHT))
 		i = (w_height - HEIGHT) / 2.0 * ratio;
