@@ -1,7 +1,7 @@
-NO ./media/wall_1.xpm
-SO ./media/wall_2.xpm
-WE ./media/wall_3.xpm
-EA ./media/wall_4.xpm
+NO ./textures/redbrick.xpm
+SO ./textures/greystone.xpm
+WE ./textures/mossy.xpm
+EA ./textures/colorstone.xpm
 
 F 0,255,0
 C 0,0,255
