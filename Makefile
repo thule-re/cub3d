@@ -36,6 +36,7 @@ FILES 		=	main \
 				error \
 				cleanup \
 				textures \
+				textures_utils \
 				fps \
 
 

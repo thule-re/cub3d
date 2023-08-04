@@ -12,29 +12,6 @@
 
 #include "cub3d.h"
 
-/// \brief loads the textures from the path in the config file to an image
-/// \param data Pointer to the main data structure
-/// \return 1 on success, 0 on failure
-static int	load_textures(t_data *data)
-{
-	t_texture	*no;
-	t_texture	*so;
-	t_texture	*we;
-	t_texture	*ea;
-
-	no = &data->map.texture_no;
-	so = &data->map.texture_so;
-	we = &data->map.texture_we;
-	ea = &data->map.texture_ea;
-	load_texture(data, no);
-	load_texture(data, so);
-	load_texture(data, we);
-	load_texture(data, ea);
-	if (!no->img.img || !so->img.img || !we->img.img || !ea->img.img)
-		return (0);
-	return (1);
-}
-
 /// \brief gather information about the map like width and height
 /// \param data Pointer to the main data structure
 /// \param map The map as a string array

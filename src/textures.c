@@ -24,21 +24,6 @@ double	perpendicular_distance(t_intersect intersect, t_player player)
 	return (dot_product / divisor * distance);
 }
 
-/// \brief Load a texture from a path to an image
-/// \param data Pointer to the main data structure
-/// \param texture Pointer to the texture structure
-/// \return 1 on success, 0 on failure
-int	load_texture(t_data *data, t_texture *texture)
-{
-	texture->img.img = mlx_xpm_file_to_image(data->mlx, texture->path,
-			&texture->width, &texture->height);
-	if (!texture->img.img)
-		return (0);
-	texture->img.addr = mlx_get_data_addr(texture->img.img, &texture->img.bpp,
-			&texture->img.length, &texture->img.endian);
-	return (1);
-}
-
 /// \brief returns the type of wall the ray hit
 /// \param intersect the intersection of the ray and the wall
 /// \return 0 for north wall, 1 for south wall, 2 for west wall, 3 for east wall
