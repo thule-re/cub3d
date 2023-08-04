@@ -86,7 +86,7 @@ static void	draw_rays(t_data *data)
 	int		i;
 	double	j;
 
-	i = 48;
+	i = 12;
 	while (i < WIDTH)
 	{
 		j = 1;

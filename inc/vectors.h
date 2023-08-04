@@ -23,11 +23,6 @@ typedef struct s_vec2 {
 	double	y;
 }				t_vec2;
 
-typedef struct	s_vec2_int {
-	int x;
-	int y;
-}				t_vec2_int;
-
 /// \brief 2x2 matrix struct
 /// \param m 2D array of the matrix
 typedef struct s_mat2 {
@@ -47,16 +42,6 @@ static const t_mat2	g_rot180 = {
 static const t_mat2	g_rot270 = {
 	.m = {{0, 1}, \
 		{-1, 0}}
-};
-
-static const t_mat2	g_counter_clockwise_matrix = {
-	.m = {{0.999847695156391, 0.017452406437283}, \
-	{-0.017452406437283, 0.999847695156391}}
-};
-
-static const t_mat2	g_clockwise_matrix = {
-	.m = {{0.999847695156391, -0.017452406437283}, \
-		{0.017452406437283, 0.999847695156391}}
 };
 
 t_vec2	vec2_add(t_vec2 a, t_vec2 b);

@@ -13,7 +13,7 @@
 #include "../include/libft.h"
 
 static char	*ft_calloc_range(const char *str, char c)
-{	
+{
 	int		i;
 	char	*range;
 
