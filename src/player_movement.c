@@ -31,9 +31,6 @@ void	handle_keys(t_data *data)
 		turn_right(data);
 }
 
-//if (is_wall(data, new_pos.x, new_pos.y) == 0)
-//	data->player.pos = new_pos;
-
 /// \brief Move the player forward
 /// \param data Pointer to the main data structure
 /// \return none

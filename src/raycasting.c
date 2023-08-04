@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+/// \brief Check if the ray intersects with a vertical wall
+/// \param map The map
+/// \param ray The ray to check
+/// \return The intersection point
 static t_vec2	check_x_intersect(t_map map, t_ray ray)
 {
 	t_vec2		start;
@@ -29,6 +33,10 @@ static t_vec2	check_x_intersect(t_map map, t_ray ray)
 	return (start);
 }
 
+/// \brief Check if the ray intersects with a horizontal wall
+/// \param map The map
+/// \param ray The ray to check
+/// \return The intersection point
 static t_vec2	check_y_intersect(t_map map, t_ray ray)
 {
 	t_vec2	start;
@@ -46,6 +54,10 @@ static t_vec2	check_y_intersect(t_map map, t_ray ray)
 	return (start);
 }
 
+/// \brief Cast a ray and draw it
+/// \param data Pointer to the main data structure
+/// \param ray The ray to cast
+/// \return none
 static void	cast_ray(t_data *data, t_ray ray)
 {
 	t_vec2		x_sect;
@@ -63,6 +75,9 @@ static void	cast_ray(t_data *data, t_ray ray)
 	draw_ray(data, intersect);
 }
 
+/// \brief Cast rays for column of pixels
+/// \param data Pointer to the main data structure
+/// \return none
 void	raycasting(t_data *data)
 {
 	int	i;
