@@ -120,6 +120,7 @@ typedef struct s_keyboard {
 	t_key	right;
 	t_key	turn_left;
 	t_key	turn_right;
+	t_key	sprint;
 	t_key	esc;
 }				t_keyboard;
 
@@ -218,9 +219,9 @@ int		is_wall(t_map map, t_vec2 pos);
 
 // fps
 void	fps_module(t_data *data);
+void	fps_limiter(void);
 
 // raycasting
-int		is_wall(t_map map, t_vec2 pos);
 void	raycasting(t_data *data);
 
 #endif

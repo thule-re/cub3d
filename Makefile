@@ -29,6 +29,7 @@ OBJ_DIRS	=	./obj \
 				./obj/vectors \
 
 FILES 		=	fps/fps \
+				fps/fps_limiter \
 				init/hook \
 				init/init \
 				main/main \
