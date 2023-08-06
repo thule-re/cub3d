@@ -38,6 +38,7 @@ FILES 		=	fps/fps \
 				minimap/minimap \
 				minimap/minimap_utils \
 				player/movement \
+				player/movement_utils \
 				player/rotation \
 				raycasting/raycasting \
 				raycasting/ray_utils \
@@ -75,7 +76,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
-	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX)
+	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
 	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
 
 $(MLX):

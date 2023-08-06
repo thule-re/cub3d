@@ -21,7 +21,7 @@ double	perpendicular_distance(t_intersect intersect, t_player player)
 	dot_product = vec2_dot(intersect.ray->dir, player.dir);
 	divisor = vec2_mag(intersect.ray->dir) * vec2_mag(player.dir);
 	distance = vec2_mag(vec2_sub(intersect.pos, *intersect.ray->pos));
-	return (dot_product / divisor * distance);
+	return (divisor / (dot_product * distance));
 }
 
 /// \brief returns the type of wall the ray hit
@@ -65,7 +65,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	int		w_height;
 	int		tex_col;
 
-	w_height = (int)(1.7 * HEIGHT / perpendicular_distance(sect, data->player));
+	w_height = (int)(WIDTH * perpendicular_distance(sect, data->player));
 	ratio = ((double)tex.height / (double)w_height);
 	if ((w_height > HEIGHT))
 		i = (w_height - HEIGHT) / 2.0 * ratio;
