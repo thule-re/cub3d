@@ -49,8 +49,6 @@ static void	draw_map(t_data *data)
 		{
 			if (data->map.map[i][j].type)
 				draw_tile(data, j * 5 + 3, i * 5 + 3, 0x00FF0000);
-			else
-				draw_tile(data, j * 5 + 3, i * 5 + 3, 0x00000000);
 		}
 	}
 }
@@ -66,7 +64,7 @@ static void	draw_rays(t_data *data)
 	int		i;
 	double	j;
 
-	i = 12;
+	i = 0;
 	while (i < WIDTH)
 	{
 		j = 1;
@@ -81,7 +79,7 @@ static void	draw_rays(t_data *data)
 			my_mlx_pixel_put(&data->img, x, y, 0x0000FF00);
 			j += 0.1;
 		}
-		i += 12;
+		i += 6;
 	}
 }
 
@@ -105,8 +103,8 @@ static void	draw_crosshair(t_data *data)
 /// \return none
 void	draw_minimap(t_data *data)
 {
-	draw_map(data);
 	draw_rays(data);
+	draw_map(data);
 	draw_player(data);
 	draw_crosshair(data);
 }
