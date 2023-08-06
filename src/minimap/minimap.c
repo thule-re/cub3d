@@ -92,7 +92,7 @@ static void	draw_rays(t_data *data)
 		j = 1;
 		vec = vec2_mul(data->rays[i].dir, j);
 		vec = vec2_add(data->player.pos, vec);
-		while (j < 15 && !is_wall(data->map, vec))
+		while (!is_wall(data->map, vec))
 		{
 			vec = vec2_mul(data->rays[i].dir, j);
 			vec = vec2_add(data->player.pos, vec);
