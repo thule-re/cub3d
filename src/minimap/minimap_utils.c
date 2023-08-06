@@ -12,6 +12,26 @@
 
 #include "cub3d.h"
 
+/// \brief this function draws a tile to the minimap
+/// \param data data struct
+/// \param x x position of the tile
+/// \param y y position of the tile
+/// \param color color of the tile
+/// \return none
+void	draw_tile(t_data *data, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = x - 4;
+	while (++i < x + 3)
+	{
+		j = y - 3;
+		while (j < y + 3)
+			my_mlx_pixel_put(&data->img, i, j++, color);
+	}
+}
+
 /// \brief this function checks if the given tile is a wall
 /// \param map map struct
 /// \param pos position of the tile

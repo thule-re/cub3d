@@ -33,26 +33,6 @@ static void	draw_player(t_data *data)
 	my_mlx_pixel_put(&data->img, x + 1, y + 1, 0x0000FF00);
 }
 
-/// \brief this function draws a tile to the minimap
-/// \param data data struct
-/// \param x x position of the tile
-/// \param y y position of the tile
-/// \param color color of the tile
-/// \return none
-static void	draw_tile(t_data *data, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	i = x - 4;
-	while (++i < x + 3)
-	{
-		j = y - 3;
-		while (j < y + 3)
-			my_mlx_pixel_put(&data->img, i, j++, color);
-	}
-}
-
 /// \brief this function draws the map tiles to the minimap
 /// \param data data struct
 /// \return none
@@ -105,6 +85,21 @@ static void	draw_rays(t_data *data)
 	}
 }
 
+/// \brief this function draws the crosshair to the screen
+/// \param data data struct
+/// \return none
+static void	draw_crosshair(t_data *data)
+{
+	int	i;
+
+	i = -4;
+	while (++i < 4)
+		my_mlx_pixel_put(&data->img, WIDTH / 2, HEIGHT / 2 + i, 0x0000FF00);
+	i = -4;
+	while (++i < 4)
+		my_mlx_pixel_put(&data->img, WIDTH / 2 + i, HEIGHT / 2, 0x0000FF00);
+}
+
 /// \brief this function draws the minimap
 /// \param data data struct
 /// \return none
@@ -113,4 +108,5 @@ void	draw_minimap(t_data *data)
 	draw_map(data);
 	draw_rays(data);
 	draw_player(data);
+	draw_crosshair(data);
 }
