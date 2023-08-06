@@ -76,7 +76,7 @@ void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
 	y = 0;
 	while (y < HEIGHT / 2 - w_height / 2)
 		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
-	while (i < tex.height && y < HEIGHT / 2 + w_height / 2)
+	while (y < HEIGHT / 2 + w_height / 2)
 	{
 		my_mlx_pixel_put(img, sect.ray->idx, y++,
 			(int)get_pixel_value(&tex.img, tex_col, (int)i));
