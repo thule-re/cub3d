@@ -25,7 +25,7 @@ unsigned int	get_time_in_s(void)
 
 void	fps_module(t_data *data)
 {
-	static int			fps;
+	static char			*fps;
 	static int			fps_count;
 	static unsigned int	last_time;
 	unsigned int		current_time;
@@ -34,12 +34,14 @@ void	fps_module(t_data *data)
 	if (current_time != last_time)
 	{
 		last_time = current_time;
-		fps = fps_count;
+		if (fps)
+			free(fps);
+		fps = ft_itoa(fps_count);
 		fps_count = 0;
 	}
 	else
 		fps_count++;
 	mlx_string_put(data->mlx, data->win, 10, 10, 0x0000FF00, "FPS:");
-	mlx_string_put(data->mlx, data->win, 50, 10, 0x0000FF00, ft_itoa(fps));
+	mlx_string_put(data->mlx, data->win, 50, 10, 0x0000FF00, fps);
 	fps_limiter();
 }
