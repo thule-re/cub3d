@@ -32,6 +32,8 @@ int	key_down(int k, t_data *data)
 		data->keys.turn_left.is_pressed = 1;
 	else if (k == data->keys.turn_right.keycode)
 		data->keys.turn_right.is_pressed = 1;
+	else if (k == data->keys.sprint.keycode)
+		data->player.move_speed = 0.3;
 	return (k);
 }
 
@@ -53,6 +55,8 @@ int	key_up(int k, t_data *data)
 		data->keys.turn_left.is_pressed = 0;
 	else if (k == data->keys.turn_right.keycode)
 		data->keys.turn_right.is_pressed = 0;
+	else if (k == data->keys.sprint.keycode)
+		data->player.move_speed = 0.15;
 	return (k);
 }
 
@@ -82,5 +86,6 @@ int	loop_hook(t_data *data)
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	fps_module(data);
+	fps_limiter();
 	return (0);
 }

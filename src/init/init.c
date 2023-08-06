@@ -47,6 +47,7 @@ void	init_keys(t_data *data)
 	data->keys.turn_left.is_pressed = 0;
 	data->keys.turn_right.is_pressed = 0;
 	data->keys.esc.is_pressed = 0;
+	data->keys.sprint.is_pressed = 0;
 	data->keys.forward.keycode = KEY_W;
 	data->keys.backward.keycode = KEY_S;
 	data->keys.left.keycode = KEY_A;
@@ -54,6 +55,7 @@ void	init_keys(t_data *data)
 	data->keys.turn_left.keycode = KEY_LEFT;
 	data->keys.turn_right.keycode = KEY_RIGHT;
 	data->keys.esc.keycode = KEY_ESCAPE;
+	data->keys.sprint.keycode = KEY_SHIFT;
 }
 
 /// \brief initializes the player
@@ -65,7 +67,7 @@ void	init_player(t_data *data)
 	data->player.pos.y = 0;
 	data->player.dir.x = 0;
 	data->player.dir.y = -1;
-	data->player.move_speed = 0.2;
+	data->player.move_speed = 0.15;
 	data->player.rotation_angle = 2.5;
 	data->player.clockwise_rot = rot_matrixc(data->player.rotation_angle);
 	data->player.cclockwise_rot = rot_matrixcc(data->player.rotation_angle);

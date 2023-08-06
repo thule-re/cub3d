@@ -20,5 +20,6 @@
 # define KEY_D				100
 # define KEY_LEFT			65361
 # define KEY_RIGHT			65363
+# define KEY_SHIFT			65505
 
 #endif
