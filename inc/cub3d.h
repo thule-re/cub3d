@@ -182,6 +182,7 @@ void	move_left(t_data *data);
 void	move_right(t_data *data);
 void	turn_left(t_data *data);
 void	turn_right(t_data *data);
+int		is_in_hitbox(t_map map, t_vec2 pos);
 
 // ray utils
 void	update_ray_directions(t_data *data, t_mat2 rot);
