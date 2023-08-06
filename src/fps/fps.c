@@ -37,11 +37,11 @@ void	fps_module(t_data *data)
 		if (fps)
 			free(fps);
 		fps = ft_itoa(fps_count);
+		fps = ft_strjoinf(ft_strdup("FPS: "), fps);
 		fps_count = 0;
 	}
 	else
 		fps_count++;
-	mlx_string_put(data->mlx, data->win, 10, 10, 0x0000FF00, "FPS:");
-	mlx_string_put(data->mlx, data->win, 50, 10, 0x0000FF00, fps);
+	mlx_string_put(data->mlx, data->win, WIDTH - 50, 10, 0x0000FF00, fps);
 	fps_limiter();
 }
