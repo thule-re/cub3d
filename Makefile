@@ -1,7 +1,15 @@
-LIBX11 = /usr/lib/x86_64-linux-gnu/libX11.so
-LIBXEXT = /usr/lib/x86_64-linux-gnu/libXext.so
-LIBZ = /usr/lib/x86_64-linux-gnu/libz.so
-LIBM = /usr/lib/x86_64-linux-gnu/libm.so
+
+
+UNAME_S = $(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	LIBX11	= /usr/lib/x86_64-linux-gnu/libX11.so
+	LIBXEXT	= /usr/lib/x86_64-linux-gnu/libXext.so
+	LIBZ	= /usr/lib/x86_64-linux-gnu/libz.so
+	LIBM	= /usr/lib/x86_64-linux-gnu/libm.so
+	X11		= $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
+else
+	X11		=	-L/usr/X11/lib -lX11 -lXext -lm
+endif
 
 RESET		=	\033[0m
 GREEN		=	\033[32m
@@ -64,7 +72,6 @@ OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
 
 NAME		=	cub3D
 FLAGS		=	-Wall -Werror -Wextra -Ofast -g
-MLX_FLAGS	=	-L/usr/X11/lib -lX11 -lXext -lm
 INC			=	-I $(INC_DIR) -I $(LIBFT_DIR) -I $(MLX_DIR) -I /usr/X11/include
 
 LIBFT_DIR = ./libft
@@ -77,7 +84,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
-	@cc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
+	@cc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(X11)
 	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
 
 $(MLX):
