@@ -1,14 +1,14 @@
 
 
 UNAME_S = $(shell uname -s)
-ifeq ($(UNAME_S), Linux)
+ifeq ($(UNAME_S), Darwin)
+	X11		=	-L/usr/X11/lib -lX11 -lXext -lm
+else
 	LIBX11	= /usr/lib/x86_64-linux-gnu/libX11.so
 	LIBXEXT	= /usr/lib/x86_64-linux-gnu/libXext.so
 	LIBZ	= /usr/lib/x86_64-linux-gnu/libz.so
 	LIBM	= /usr/lib/x86_64-linux-gnu/libm.so
 	X11		= $(LIBX11) $(LIBXEXT) $(LIBZ) $(LIBM)
-else
-	X11		=	-L/usr/X11/lib -lX11 -lXext -lm
 endif
 
 RESET		=	\033[0m

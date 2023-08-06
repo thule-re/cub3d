@@ -181,7 +181,6 @@ void	init_hooks(t_data *data);
 void	init_player(t_data *data);
 void	init_rays(t_data *data);
 void	init_map(t_data *data, char *filename);
-void	init_camera(t_data *data);
 
 // hook
 int		key_down(int k, t_data *data);

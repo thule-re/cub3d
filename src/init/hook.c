@@ -15,7 +15,7 @@
 /// \brief this function is called when a key is pressed
 /// \param k keycode of the pressed key
 /// \param data data struct
-/// \return none
+/// \return keycode of the pressed key
 int	key_down(int k, t_data *data)
 {
 	if (k == data->keys.esc.keycode)
@@ -38,9 +38,9 @@ int	key_down(int k, t_data *data)
 }
 
 /// \brief this function is called when a key is released
-/// \param k keycode of the pressed key
+/// \param k keycode of the released key
 /// \param data data struct
-/// \return none
+/// \return keycode of the released key
 int	key_up(int k, t_data *data)
 {
 	if (k == data->keys.forward.keycode)
@@ -78,7 +78,7 @@ int	destroy_hook(t_data *data)
 
 /// \brief this function handles the mlx loop
 /// \param data data struct
-/// \return none
+/// \return 0
 int	loop_hook(t_data *data)
 {
 	handle_keys(data);
