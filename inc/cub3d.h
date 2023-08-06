@@ -24,6 +24,7 @@
 # define HEIGHT 540
 # define WIDTH  960
 # define FOV 60.0
+# define FPS 60
 
 /// \brief Structure for a ray
 /// \param dir Direction of the ray

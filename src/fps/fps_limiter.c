@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fps.h"
+#include "cub3d.h"
 
 unsigned long	get_time_in_us(void)
 {
@@ -30,7 +31,7 @@ void	fps_limiter(void)
 
 	current_time = get_time_in_us();
 	time_diff = current_time - last_time;
-	while (time_diff < 16666)
+	while (time_diff < (1000000 / FPS))
 		time_diff = get_time_in_us() - last_time;
 	last_time = get_time_in_us();
 }
