@@ -22,4 +22,8 @@
 # define KEY_RIGHT			65363
 # define KEY_SHIFT			65505
 
+# define BUTTON_LMB			1
+# define BUTTON_MMB			2
+# define BUTTON_RMB			3
+
 #endif

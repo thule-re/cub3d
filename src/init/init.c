@@ -17,6 +17,8 @@
 /// \return none
 void	init_hooks(t_data *data)
 {
+	mlx_hook(data->win, ButtonPress, ButtonPressMask, button_down, data);
+	mlx_hook(data->win, ButtonRelease, ButtonReleaseMask, button_up, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_down, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_up, data);
 	mlx_hook(data->win, DestroyNotify, NoEventMask, destroy_hook, data);
@@ -48,6 +50,9 @@ void	init_keys(t_data *data)
 	data->keys.turn_right.is_pressed = 0;
 	data->keys.esc.is_pressed = 0;
 	data->keys.sprint.is_pressed = 0;
+	data->mouse.lmb.is_pressed = 0;
+	data->mouse.mmb.is_pressed = 0;
+	data->mouse.rmb.is_pressed = 0;
 	data->keys.forward.keycode = KEY_W;
 	data->keys.backward.keycode = KEY_S;
 	data->keys.left.keycode = KEY_A;
@@ -56,6 +61,9 @@ void	init_keys(t_data *data)
 	data->keys.turn_right.keycode = KEY_RIGHT;
 	data->keys.esc.keycode = KEY_ESCAPE;
 	data->keys.sprint.keycode = KEY_SHIFT;
+	data->mouse.lmb.keycode = BUTTON_LMB;
+	data->mouse.mmb.keycode = BUTTON_MMB;
+	data->mouse.rmb.keycode = BUTTON_RMB;
 }
 
 /// \brief initializes the player

@@ -39,6 +39,7 @@ OBJ_DIRS	=	./obj \
 FILES 		=	fps/fps \
 				fps/fps_limiter \
 				init/hook \
+				init/hook2 \
 				init/init \
 				main/main \
 				map/map_init \

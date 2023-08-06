@@ -25,6 +25,7 @@
 # define WIDTH  960
 # define FOV 60.0
 # define FPS 60
+# define MOUSE_SENSITIVITY 0.3
 
 /// \brief Structure for a ray
 /// \param dir Direction of the ray
@@ -106,6 +107,17 @@ typedef struct s_key {
 	int	keycode;
 }				t_key;
 
+/// \brief Structure for a mouse
+/// \param pos Position of the mouse
+/// \param lmb Left mouse button
+/// \param mmb Middle mouse button
+/// \param rmb Right mouse button
+typedef struct s_mouse {
+	t_key	lmb;
+	t_key	mmb;
+	t_key	rmb;
+}				t_mouse;
+
 /// \brief Structure for a keyboard
 /// \param forward Key for moving forward
 /// \param backward Key for moving backward
@@ -155,6 +167,7 @@ typedef struct s_data {
 	void		*win;
 
 	t_keyboard	keys;
+	t_mouse		mouse;
 	t_player	player;
 	t_ray		rays[WIDTH];
 	t_map		map;
@@ -173,6 +186,8 @@ void	init_camera(t_data *data);
 // hook
 int		key_down(int k, t_data *data);
 int		key_up(int k, t_data *data);
+int		button_down(int k, int x, int y, t_data *data);
+int		button_up(int k, int x, int y, t_data *data);
 int		loop_hook(t_data *data);
 int		destroy_hook(t_data *data);
 
@@ -184,6 +199,7 @@ void	move_left(t_data *data);
 void	move_right(t_data *data);
 void	turn_left(t_data *data);
 void	turn_right(t_data *data);
+void	mouse_turn(t_data *data);
 int		is_in_hitbox(t_map map, t_vec2 pos);
 
 // ray utils

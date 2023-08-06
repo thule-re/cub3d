@@ -29,6 +29,8 @@ void	handle_keys(t_data *data)
 		turn_left(data);
 	if (data->keys.turn_right.is_pressed)
 		turn_right(data);
+	if (data->mouse.rmb.is_pressed)
+		mouse_turn(data);
 }
 
 /// \brief Move the player forward
