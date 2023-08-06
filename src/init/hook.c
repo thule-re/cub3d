@@ -86,6 +86,5 @@ int	loop_hook(t_data *data)
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	fps_module(data);
-	fps_limiter();
 	return (0);
 }

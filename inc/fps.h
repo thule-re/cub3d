@@ -17,4 +17,6 @@
 
 typedef struct timeval	t_timeval;
 
+void	fps_limiter(void);
+
 #endif

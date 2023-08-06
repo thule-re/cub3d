@@ -220,7 +220,6 @@ int		is_wall(t_map map, t_vec2 pos);
 
 // fps
 void	fps_module(t_data *data);
-void	fps_limiter(void);
 
 // raycasting
 void	raycasting(t_data *data);
