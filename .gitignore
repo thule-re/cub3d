@@ -1,3 +1,4 @@
-.idea
-./obj
-./cub3d
+.idea/*
+/obj/*
+/textures/Gui*
+/cub3D
