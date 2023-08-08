@@ -77,7 +77,9 @@ static int	parse_config(t_data *data, char **content)
 	i = -1;
 	while (content[++i])
 	{
-		if (ft_strncmp(content[i], "NO", 2) == 0)
+		if (ft_strncmp(content[i], "#", 1) == 0)
+			continue ;
+		else if (ft_strncmp(content[i], "NO", 2) == 0)
 			data->map.texture_no.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "SO", 2) == 0)
 			data->map.texture_so.path = trim(&content[i][2], ' ');
