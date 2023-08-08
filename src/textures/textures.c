@@ -57,33 +57,33 @@ int	get_wall_type(t_intersect intersect)
 /// \param tex The texture to draw
 /// \param sect The intersection of the ray and the wall
 /// \return none
-void	draw_column(t_data *data, t_img *img, t_texture tex, t_intersect sect)
+void	draw_column(t_data *data, t_texture tex, t_intersect sect, int type)
 {
 	double	ratio;
 	double	i;
 	int		y;
 	int		w_height;
-	int		tex_col;
+	double	tex_col;
 
+	i = 0;
+	y = 0;
 	w_height = (int)(WIDTH * perpendicular_distance(sect, data->player));
 	ratio = ((double)tex.height / (double)w_height);
 	if ((w_height > HEIGHT))
 		i = (w_height - HEIGHT) / 2.0 * ratio;
-	else
-		i = 0;
-	tex_col = (int)(max(sect.pos.x - (int)sect.pos.x, sect.pos.y - \
-				(int)sect.pos.y) * tex.width);
-	y = 0;
+	tex_col = (max(sect.pos.x - (int)sect.pos.x, sect.pos.y - (int)sect.pos.y));
+	if (type == 0 || type == 3)
+		tex_col = 1 - tex_col;
+	tex_col = tex.width * tex_col;
 	while (y < HEIGHT / 2 - w_height / 2)
-		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.ceiling_color);
+		my_mlx_pixel_put(&data->img, sect.ray->idx, y++, data->map.ceiling);
 	while (y < HEIGHT / 2 + w_height / 2)
 	{
-		my_mlx_pixel_put(img, sect.ray->idx, y++,
-			(int)get_pixel_value(&tex.img, tex_col, (int)i));
-		i += ratio;
+		my_mlx_pixel_put(&data->img, sect.ray->idx, y++,
+			(int)get_pixel_value(&tex.img, (int)tex_col, (int)(i += ratio)));
 	}
 	while (y < HEIGHT)
-		my_mlx_pixel_put(img, sect.ray->idx, y++, data->map.floor_color);
+		my_mlx_pixel_put(&data->img, sect.ray->idx, y++, data->map.floor);
 }
 
 /// \brief Draw a ray to the Screen image
@@ -100,5 +100,5 @@ void	draw_ray(t_data *data, t_intersect intersect)
 	tex[2] = data->map.texture_we;
 	tex[3] = data->map.texture_ea;
 	type = get_wall_type(intersect);
-	draw_column(data, &data->img, tex[type], intersect);
+	draw_column(data, tex[type], intersect, type);
 }
