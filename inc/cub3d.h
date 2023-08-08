@@ -27,6 +27,19 @@
 # define FPS 60
 # define MOUSE_SENSITIVITY 0.3
 
+// Struct prototypes
+typedef struct s_ray		t_ray;
+typedef struct s_intersect	t_intersect;
+typedef struct s_tile		t_tile;
+typedef struct s_img		t_img;
+typedef struct s_texture	t_texture;
+typedef struct s_map		t_map;
+typedef struct s_key		t_key;
+typedef struct s_mouse		t_mouse;
+typedef struct s_keyboard	t_keyboard;
+typedef struct s_player		t_player;
+typedef struct s_data		t_data;
+
 /// \brief Structure for a ray
 /// \param dir Direction of the ray
 /// \param pos Position of the ray
@@ -95,8 +108,8 @@ typedef struct s_map {
 	t_texture	texture_so;
 	t_texture	texture_we;
 	t_texture	texture_ea;
-	int			floor_color;
-	int			ceiling_color;
+	int			floor;
+	int			ceiling;
 }				t_map;
 
 /// \brief Structure for a key

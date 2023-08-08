@@ -61,7 +61,6 @@ FILES 		=	fps/fps \
 				vectors/vector2 \
 				vectors/vector3 \
 
-
 HEADER		=	cub3d \
 				vectors \
 				keycodes \

@@ -86,9 +86,9 @@ static int	parse_config(t_data *data, char **content)
 		else if (ft_strncmp(content[i], "EA", 2) == 0)
 			data->map.texture_ea.path = trim(&content[i][2], ' ');
 		else if (ft_strncmp(content[i], "C", 1) == 0)
-			data->map.ceiling_color = parse_color(data, &content[i][1]);
+			data->map.ceiling = parse_color(data, &content[i][1]);
 		else if (ft_strncmp(content[i], "F", 1) == 0)
-			data->map.floor_color = parse_color(data, &content[i][1]);
+			data->map.floor = parse_color(data, &content[i][1]);
 		else if (content[i][0] == ' ' || content[i][0] == '1' ||
 			content[i][0] == '0')
 			break ;
@@ -110,8 +110,8 @@ void	init_map(t_data *data, char *filename)
 	data->map.texture_so.path = 0;
 	data->map.texture_we.path = 0;
 	data->map.texture_ea.path = 0;
-	data->map.ceiling_color = 0;
-	data->map.floor_color = 0;
+	data->map.ceiling = 0;
+	data->map.floor = 0;
 	content = read_config(filename);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
