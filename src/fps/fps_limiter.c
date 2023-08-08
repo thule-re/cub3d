@@ -13,7 +13,9 @@
 #include "fps.h"
 #include "cub3d.h"
 
-unsigned long	get_time_in_us(void)
+/// \brief this function returns the current time in microseconds
+/// \return the current time in microseconds
+static unsigned long	get_time_in_us(void)
 {
 	t_timeval		time;
 	unsigned long	time_in_us;
@@ -23,15 +25,13 @@ unsigned long	get_time_in_us(void)
 	return (time_in_us);
 }
 
+/// \brief this function limits the fps to the value of FPS
+/// \return none
 void	fps_limiter(void)
 {
 	static unsigned long	last_time;
-	unsigned long			current_time;
-	unsigned long			time_diff;
 
-	current_time = get_time_in_us();
-	time_diff = current_time - last_time;
-	while (time_diff < (1000000 / FPS))
-		time_diff = get_time_in_us() - last_time;
+	while (get_time_in_us() - last_time < (1000000 / FPS))
+		;
 	last_time = get_time_in_us();
 }
