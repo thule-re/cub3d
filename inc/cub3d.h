@@ -95,8 +95,8 @@ typedef struct s_map {
 	t_texture	texture_so;
 	t_texture	texture_we;
 	t_texture	texture_ea;
-	int			floor_color;
-	int			ceiling_color;
+	int			floor;
+	int			ceiling;
 }				t_map;
 
 /// \brief Structure for a key
