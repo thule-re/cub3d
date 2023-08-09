@@ -16,6 +16,7 @@
 # include "mlx.h"
 # include "libft.h"
 # include "vectors.h"
+# include "fps.h"
 # include "keycodes.h"
 # include <X11/X.h>
 # include <math.h>
@@ -245,9 +246,6 @@ void	draw_column(t_data *data, t_texture tex, t_intersect sect, int type);
 // minimap
 void	draw_minimap(t_data *data);
 void	draw_tile(t_data *data, int x, int y, int color);
-
-// fps
-void	fps_module(t_data *data);
 
 // raycasting
 void	raycasting(t_data *data);

@@ -76,6 +76,8 @@ int	destroy_hook(t_data *data)
 	exit(0);
 }
 
+// fps_module(data); add this line for fps limiter and counter
+
 /// \brief this function handles the mlx loop
 /// \param data data struct
 /// \return 0
@@ -85,6 +87,5 @@ int	loop_hook(t_data *data)
 	raycasting(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	fps_module(data);
 	return (0);
 }

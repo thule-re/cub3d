@@ -14,9 +14,12 @@
 # define FPS_H
 
 # include <sys/time.h>
+# include "cub3d.h"
 
+typedef struct s_data	t_data;
 typedef struct timeval	t_timeval;
 
 void	fps_limiter(void);
+void	fps_module(t_data *data);
 
 #endif
