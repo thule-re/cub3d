@@ -1,7 +1,7 @@
-#EA ./textures/Guillaume_other.xpm
-#WE ./textures/Guillaume_other.xpm
-#SO ./textures/Guillaume_other.xpm
-#NO ./textures/Guillaume_other.xpm
+EA ./textures/Guillaume_other.xpm
+WE ./textures/Guillaume_other.xpm
+SO ./textures/Guillaume_other.xpm
+NO ./textures/Guillaume_other.xpm
 
 #EA ./textures/42logo.xpm
 #WE ./textures/42logo.xpm
