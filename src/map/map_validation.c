@@ -61,7 +61,7 @@ int	check_valid(char **map)
 		{
 			if (!valid_char(map[i][j]))
 				return (0);
-			if (map[i][j] == '0')
+			if (ft_strchr("0NSEW", map[i][j]))
 				if (!check_surrounding(map, j, i))
 					return (0);
 		}

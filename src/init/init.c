@@ -30,6 +30,10 @@ void	init_hooks(t_data *data)
 /// \return none
 void	init_mlx(t_data *data)
 {
+	data->map.texture_no.img.img = NULL;
+	data->map.texture_so.img.img = NULL;
+	data->map.texture_we.img.img = NULL;
+	data->map.texture_ea.img.img = NULL;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);

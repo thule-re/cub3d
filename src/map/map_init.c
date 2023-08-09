@@ -79,17 +79,17 @@ static int	parse_config(t_data *data, char **content)
 	{
 		if (ft_strncmp(content[i], "#", 1) == 0)
 			continue ;
-		else if (ft_strncmp(content[i], "NO", 2) == 0)
+		else if (!ft_strncmp(content[i], "NO", 2) && !data->map.texture_no.path)
 			data->map.texture_no.path = trim(&content[i][2], ' ');
-		else if (ft_strncmp(content[i], "SO", 2) == 0)
+		else if (!ft_strncmp(content[i], "SO", 2) && !data->map.texture_so.path)
 			data->map.texture_so.path = trim(&content[i][2], ' ');
-		else if (ft_strncmp(content[i], "WE", 2) == 0)
+		else if (!ft_strncmp(content[i], "WE", 2) && !data->map.texture_we.path)
 			data->map.texture_we.path = trim(&content[i][2], ' ');
-		else if (ft_strncmp(content[i], "EA", 2) == 0)
+		else if (!ft_strncmp(content[i], "EA", 2) && !data->map.texture_ea.path)
 			data->map.texture_ea.path = trim(&content[i][2], ' ');
-		else if (ft_strncmp(content[i], "C", 1) == 0)
+		else if (!ft_strncmp(content[i], "C", 1) && data->map.ceiling == -1)
 			data->map.ceiling = parse_color(data, &content[i][1]);
-		else if (ft_strncmp(content[i], "F", 1) == 0)
+		else if (!ft_strncmp(content[i], "F", 1) && data->map.floor == -1)
 			data->map.floor = parse_color(data, &content[i][1]);
 		else if (content[i][0] == ' ' || content[i][0] == '1' ||
 			content[i][0] == '0')
@@ -108,12 +108,12 @@ void	init_map(t_data *data, char *filename)
 	int		i;
 	int		code;
 
-	data->map.texture_no.path = 0;
-	data->map.texture_so.path = 0;
-	data->map.texture_we.path = 0;
-	data->map.texture_ea.path = 0;
-	data->map.ceiling = 0;
-	data->map.floor = 0;
+	data->map.texture_no.path = NULL;
+	data->map.texture_so.path = NULL;
+	data->map.texture_we.path = NULL;
+	data->map.texture_ea.path = NULL;
+	data->map.ceiling = -1;
+	data->map.floor = -1;
 	content = read_config(filename);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
