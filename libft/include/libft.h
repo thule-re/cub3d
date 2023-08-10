@@ -94,5 +94,6 @@ void		*ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 char		*ft_strndup(const char *src, int n);
 int			ft_strlenc(const char *str, int c);
 char		*ft_strjoinf(char *s1, char *s2);
+int			ft_isdigits(char *str);
 
 #endif

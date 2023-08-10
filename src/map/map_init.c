@@ -25,7 +25,8 @@ static int	parse_color(t_data *data, char *str)
 	str = trim(str, ' ');
 	rgb = ft_split(str, ',');
 	free(str);
-	if (rgb[0] && rgb[1] && rgb[2] && !rgb[3])
+	if (ft_isdigits(rgb[0]) && ft_isdigits(rgb[1]) && ft_isdigits(rgb[2]) \
+	&& !rgb[3])
 	{
 		color = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8 | ft_atoi(rgb[2]);
 		free_split(rgb);

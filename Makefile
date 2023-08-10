@@ -72,7 +72,7 @@ OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
 
 NAME		=	cub3D
 FLAGS		=	-Wall -Werror -Wextra -Ofast -g
-INC			=	-I $(INC_DIR) -I $(LIBFT_DIR) -I $(MLX_DIR) -I /usr/X11/include
+INC			=	-I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(MLX_DIR) -I /usr/X11/include
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
@@ -82,7 +82,7 @@ MLX = ./mlx_linux/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@echo "$(YELLOW)Compiling [$(NAME)]...$(RESET)"
 	@cc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(X11)
 	@echo "$(GREEN)Finished [$(NAME)]$(RESET)"
