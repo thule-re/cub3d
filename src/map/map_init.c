@@ -13,12 +13,12 @@
 #include "cub3d.h"
 
 /// \brief Parse a color from a string in the format "R,G,B"
-/// \param data Pointer to the main data structure
 /// \param str String to parse
 /// \return The color as an int
-static int	parse_color(t_data *data, char *str)
+static int	parse_color(char *str)
 {
 	char	**rgb;
+	int		i_rgb[3];
 	int		color;
 
 	color = 0;
@@ -28,15 +28,16 @@ static int	parse_color(t_data *data, char *str)
 	if (ft_isdigits(rgb[0]) && ft_isdigits(rgb[1]) && ft_isdigits(rgb[2]) \
 	&& !rgb[3])
 	{
-		color = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8 | ft_atoi(rgb[2]);
-		free_split(rgb);
+		i_rgb[0] = ft_atoi(rgb[0]);
+		i_rgb[1] = ft_atoi(rgb[1]);
+		i_rgb[2] = ft_atoi(rgb[2]);
 	}
 	else
-	{
-		free_split(rgb);
-		error(data, "Invalid color");
-	}
-	return (color);
+		color = -1;
+	free_split(rgb);
+	if (color == -1 || i_rgb[0] > 255 || i_rgb[1] > 255 || i_rgb[2] > 255)
+		return (-1);
+	return (i_rgb[0] << 16 | i_rgb[1] << 8 | i_rgb[2]);
 }
 
 /// \brief Read the config file and return it as a string array
@@ -89,9 +90,9 @@ static int	parse_config(t_data *data, char **content)
 		else if (!ft_strncmp(content[i], "EA", 2) && !data->map.texture_ea.path)
 			data->map.texture_ea.path = trim(&content[i][2], ' ');
 		else if (!ft_strncmp(content[i], "C", 1) && data->map.ceiling == -1)
-			data->map.ceiling = parse_color(data, &content[i][1]);
+			data->map.ceiling = parse_color(&content[i][1]);
 		else if (!ft_strncmp(content[i], "F", 1) && data->map.floor == -1)
-			data->map.floor = parse_color(data, &content[i][1]);
+			data->map.floor = parse_color(&content[i][1]);
 		else if (content[i][0] == ' ' || content[i][0] == '1' ||
 			content[i][0] == '0')
 			break ;
@@ -125,6 +126,11 @@ void	init_map(t_data *data, char *filename)
 	i = parse_config(data, content);
 	if (content[i] == NULL)
 		error(data, "No map found");
+	if (data->map.floor == -1 || data->map.ceiling == -1)
+	{
+		free_split(content);
+		error(data, "Invalid Color");
+	}
 	code = parse_map(data, &content[i]);
 	free_split(content);
 	if (code != 0)
