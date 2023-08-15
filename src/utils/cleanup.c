@@ -12,6 +12,16 @@
 
 #include "cub3d.h"
 
+static void	free_tiles(t_map map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map.height)
+		free (map.map[i++]);
+	free(map.map);
+}
+
 /// \brief free all map data
 /// \param data
 /// \return none
@@ -33,4 +43,5 @@ void	free_map(t_data *data)
 		mlx_destroy_image(data->mlx, data->map.texture_we.img.img);
 	if (data->map.texture_ea.img.img)
 		mlx_destroy_image(data->mlx, data->map.texture_ea.img.img);
+	free_tiles(data->map);
 }
