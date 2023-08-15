@@ -23,13 +23,13 @@ void	wrong_usage(void)
 /// \brief print error message for file error and exits
 /// \param filename name of the file that could not be opened
 /// \return none
-void	file_error(char *filename)
+void	file_error(char *filename, t_data *data)
 {
 	ft_putstr_fd("cub3D: ", 2);
 	ft_putstr_fd("Could not open file ", 2);
 	ft_putstr_fd(filename, 2);
 	ft_putstr_fd("\n", 2);
-	exit(1);
+	destroy_hook(data);
 }
 
 /// \brief print general error message, frees data and exits

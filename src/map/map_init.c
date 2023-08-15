@@ -42,7 +42,7 @@ static int	parse_color(t_data *data, char *str)
 /// \brief Read the config file and return it as a string array
 /// \param filename Path to the config file
 /// \return The config file as a string array
-static char	**read_config(char *filename)
+static char	**read_config(char *filename, t_data *data)
 {
 	int		fd;
 	char	buf[2];
@@ -52,7 +52,7 @@ static char	**read_config(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		file_error(filename);
+		file_error(filename, data);
 	tmp = ft_calloc(1, sizeof(char));
 	while (read(fd, buf, 1) > 0)
 	{
@@ -115,7 +115,7 @@ void	init_map(t_data *data, char *filename)
 	data->map.texture_ea.path = NULL;
 	data->map.ceiling = -1;
 	data->map.floor = -1;
-	content = read_config(filename);
+	content = read_config(filename, data);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
 		error(data, "No map found");

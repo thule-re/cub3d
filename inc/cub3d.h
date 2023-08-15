@@ -227,7 +227,7 @@ double	max(double a, double b);
 
 // error
 void	wrong_usage(void);
-void	file_error(char *filename);
+void	file_error(char *filename, t_data *data);
 void	error(t_data *data, char *msg);
 
 // cleanup
