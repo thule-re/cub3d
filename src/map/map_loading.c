@@ -106,3 +106,31 @@ int	parse_map(t_data *data, char **content)
 		return (4);
 	return (0);
 }
+
+/// \brief Fills the map with the information from the config file
+/// \param data Pointer to the main data structure
+/// \param map The map as a string array
+/// \return none
+void	fill_map(t_data *data, char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < data->map.height)
+	{
+		j = -1;
+		while (++j < data->map.width)
+			data->map.map[i][j].type = 0;
+	}
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == '1')
+				data->map.map[i][j].type = 1;
+		}
+	}
+}

@@ -99,6 +99,17 @@ static int	parse_config(t_data *data, char **content)
 	return (i);
 }
 
+static void	init_values(t_map *map)
+{
+	map->texture_no.path = NULL;
+	map->texture_so.path = NULL;
+	map->texture_we.path = NULL;
+	map->texture_ea.path = NULL;
+	map->ceiling = -1;
+	map->floor = -1;
+	map->map = NULL;
+}
+
 /// \brief gets all the information from the config file
 /// \param data Pointer to the main data structure
 /// \param filename Path to the config file
@@ -109,12 +120,7 @@ void	init_map(t_data *data, char *filename)
 	int		i;
 	int		code;
 
-	data->map.texture_no.path = NULL;
-	data->map.texture_so.path = NULL;
-	data->map.texture_we.path = NULL;
-	data->map.texture_ea.path = NULL;
-	data->map.ceiling = -1;
-	data->map.floor = -1;
+	init_values(&data->map);
 	content = read_config(filename, data);
 	i = parse_config(data, content);
 	if (content[i] == NULL)
@@ -129,33 +135,5 @@ void	init_map(t_data *data, char *filename)
 			error(data, "Invalid player position");
 		else if (code == 4)
 			error(data, "Unable to load texture");
-	}
-}
-
-/// \brief Fills the map with the information from the config file
-/// \param data Pointer to the main data structure
-/// \param map The map as a string array
-/// \return none
-void	fill_map(t_data *data, char **map)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < data->map.height)
-	{
-		j = -1;
-		while (++j < data->map.width)
-			data->map.map[i][j].type = 0;
-	}
-	i = -1;
-	while (map[++i])
-	{
-		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == '1')
-				data->map.map[i][j].type = 1;
-		}
 	}
 }

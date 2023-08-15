@@ -43,5 +43,6 @@ void	free_map(t_data *data)
 		mlx_destroy_image(data->mlx, data->map.texture_we.img.img);
 	if (data->map.texture_ea.img.img)
 		mlx_destroy_image(data->mlx, data->map.texture_ea.img.img);
-	free_tiles(data->map);
+	if (data->map.map)
+		free_tiles(data->map);
 }
